@@ -1,0 +1,21 @@
+## Funkwhale
+
+
+### Setup
+
+Follow https://docs.funkwhale.audio/installation/docker.html
+
+* We used the linked docker-compose.yml with the following modifications:
+** TODO
+* We use the linked .env file with the following modifications:
+** TODO
+
+#### Importing music
+
+Read https://docs.funkwhale.audio/importing-music.html first
+
+We use in-place importing and symlink all our music folders to a main music folder
+
+### Running it
+
+RTFM (Seriously! There's a total of 5 commands to run)
