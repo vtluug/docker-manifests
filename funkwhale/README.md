@@ -2,7 +2,7 @@
 
 
 
-### Setup
+### Configuration
 
 Follow https://docs.funkwhale.audio/installation/docker.html
 

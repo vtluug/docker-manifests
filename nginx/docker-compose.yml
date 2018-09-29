@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  letsencrypt:
+    restart: unless-stopped
+    image: linuxserver/letsencrypt
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PGID: 0
+      - PUID: 0
+      - EMAIL: sysadmin@vtluug.org
+      - URL: vtluug.org
+      - SUBDOMAINS: www,sczi,www.sczi,www.funkwhale,funkwhale,www.bash,bash,www.map,map,www.jitsi,jitsi,www.elk,elk
+      - EXTRA_DOMAINS: www.linx.li,linx.li,www.hokieprivacy.org,hokieprivacy.org
+      - VALIDATION: html # TODO Switch to dns + gandi api once pr is merged
+      - TZ: America/New_York
+    volumes:
+      - /nfs/cister/docker/apps/nginx/config:/config
