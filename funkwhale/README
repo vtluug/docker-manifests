@@ -1,6 +1,7 @@
 ## Funkwhale
 
 
+
 ### Setup
 
 Follow https://docs.funkwhale.audio/installation/docker.html
@@ -10,11 +11,16 @@ Follow https://docs.funkwhale.audio/installation/docker.html
 * We use the linked .env file with the following modifications:
 ** TODO
 
+
 #### Importing music
 
 Read https://docs.funkwhale.audio/importing-music.html first
 
-We use in-place importing and symlink all our music folders to a main music folder
+VTLUUG's main (MEDIA_ROOT in .env) music folder is /nfs/cistern/share/media/music/songs 
+
+We use in-place importing and symlink all other folders to this directory: TODO explain more
+
+
 
 ### Running it
 
