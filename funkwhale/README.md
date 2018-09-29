@@ -7,9 +7,9 @@
 Follow https://docs.funkwhale.audio/installation/docker.html
 
 * We used the linked docker-compose.yml with the following modifications:
-** TODO
+    * TODO
 * We use the linked .env file with the following modifications:
-** TODO
+    * TODO
 
 
 #### Importing music
