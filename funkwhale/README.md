@@ -4,6 +4,8 @@
 
 ### Configuration
 
+Create the folder /nfs/cistern/docker/data/funkwhale to use for persistent data
+
 Follow https://docs.funkwhale.audio/installation/docker.html
 
 * We used the linked docker-compose.yml with the following modifications:

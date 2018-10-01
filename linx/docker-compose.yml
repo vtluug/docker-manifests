@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  linx:
+    restart: unless-stopped
+    image: andreimarcu/linx-server
+    volumes:
+      - /nfs/cistern/docker/data/linx/files:/data/files
+      - /nfs/cistern/docker/data/linx/meta:/data/meta
+    ports:
+      - 127.0.0.1:702:8080
