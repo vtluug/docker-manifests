@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  hokieprivacy:
+    restart: unless-stopped
+    build: ./docker-hugo
+    volumes:
+      - /nfs/cistern/docker/data/linx/files:/data/files
+      - /nfs/cistern/docker/data/linx/meta:/data/meta
+    ports:
+      - 128.173.88.78:8000:22
+      - 2607:b400:6:cc80:0:aff:fe62:b:8000:22

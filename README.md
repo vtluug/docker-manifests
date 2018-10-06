@@ -19,14 +19,25 @@ In this repo 'app' refers to a collection of containers
 * Some apps also reference other directories, for example funkwhale uses /share for importing music. See the app-specific README for details
 
 
-#### Internal ports
+#### Ports
 
-Format is a 7 followed by a 2 digit app id
+##### External Ports
 
-* 701: wiki
-* 702: linx
-* 703: hokieprivacy
-* 704: funkwhale
+For webapps, ports 80 and 443 are used along with a service specific subdomain.
+
+For non-webapps, ports in 9000-10000 are used to expose apps externally.
+* gitolite: 9000
+* minecraft: 9001
+
+
+##### Internal Ports
+
+All of these apps are reverse-proxied through nginx:
+* 7000: vtluug-site
+* 7001: wiki
+* 7002: linx
+* 7003: hokieprivacy
+* 7004: funkwhale
 
 #### Apps to be implemented after main apps (in order of priority)
 wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, some monitoring things (elk, prometheous, portainer, watchtower, ???)
