@@ -19,7 +19,7 @@ Create the folder /nfs/cistern/docker/data/funkwhale to use for persistent data
 
 Read https://docs.funkwhale.audio/importing-music.html first
 
-VTLUUG's main (MEDIA_ROOT in .env) music folder is /nfs/cistern/share/media/music/songs 
+VTLUUG's main (`MEDIA_ROOT` in `.env`) music folder is `/nfs/cistern/share/media/music/songs`
 
 We use in-place importing and symlink all other folders to this directory: TODO explain more
 
