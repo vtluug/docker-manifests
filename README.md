@@ -25,10 +25,10 @@ In this repo 'app' refers to a collection of containers
 
 For webapps, ports 80 and 443 are used along with a service specific subdomain.
 
-For non-webapps, ports in 9000-10000 are used to expose (most) apps externally.
+For non-webapps, ports in 9000-9999 are used to expose (most) apps externally.
 * gitolite: 9000
 * minecraft: 9001
-
+* dex: ???
 
 #### Internal Ports
 
@@ -38,6 +38,7 @@ All of these apps are reverse-proxied through nginx:
 * 7002: linx
 * 7003: hokieprivacy
 * 7004: funkwhale
+* dex: ???
 
 ### Apps to be implemented after main apps (in order of priority)
-wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, some monitoring things (elk, prometheous, portainer, watchtower, ???)
+dex, wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, some monitoring things (elk, prometheous, portainer, watchtower, ???)

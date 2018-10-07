@@ -8,11 +8,11 @@ This app uses that repo as a submodule, and the actual site content is also a se
 
 ## Configuration
 
-Run `git submodule init && git submodule update`
+Run `git submodule init && git submodule update`.
 
-Clone `https://github.com/vtluug/vtluug-site.git` to `docker-hugo/site`
+Clone `https://github.com/vtluug/vtluug-site.git` to `docker-hugo/site`.
 
 
 ## Running it
 
-Run `docker-compose up -d` as papatux
+Run `docker-compose up -d` as papatux.

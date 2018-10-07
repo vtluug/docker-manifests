@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mediawiki:
+    restart: unless-stopped
+    image: mediawiki
+    volumes:
+      - /nfs/cistern/docker/data/wiki/images:/var/www/html/images
+      - /nfs/cistern/docker/data/wiki/LocalSettings.php:/var/www/LocalSettings.php
+      - /nfs/cistern/docker/data/wiki/LocalSettings_vtluug.php:/var/www/LocalSettings_vtluug.php
+      - /nfs/cistern/docker/data/wiki/LocalSettings_gobblerpedia.php:/var/www/LocalSettings_gobblerpedia.php
+    ports:
+      - 127.0.0.1:7001:80
+  database:
+    restart: unless-stopped
+    env_file: .env
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: mediawiki
+      MYSQL_USER: mediawikiuser
+      MYSQL_RANDOM_ROOT_PASSWORD: yes

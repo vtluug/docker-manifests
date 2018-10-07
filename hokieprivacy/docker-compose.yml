@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     build: ./docker-hugo
     volumes:
-      - /nfs/cistern/docker/data/linx/files:/data/files
-      - /nfs/cistern/docker/data/linx/meta:/data/meta
+      - /nfs/cistern/docker/data/hokieprivacy/files:/data/files
+      - /nfs/cistern/docker/data/hokieprivacy/meta:/data/meta
     ports:
       - 127.0.0.1:7003:1313
