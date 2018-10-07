@@ -1,0 +1,8 @@
+[submodule "hokieprivacy/docker-hugo"]
+	path = hokieprivacy/docker-hugo
+	url = https://github.com/oskapt/docker-hugo
+    ignore = dirty
+[submodule "vtluug-site/docker-hugo"]
+	path = vtluug-site/docker-hugo
+    url = https://github.com/oskapt/docker-hugo
+    ignore = dirty

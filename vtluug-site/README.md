@@ -1,4 +1,4 @@
-# hokieprivacy
+# vtluug-site
 
 Base image: https://github.com/oskapt/docker-hugo
 
@@ -8,11 +8,9 @@ This app uses that repo as a submodule, and the actual site content is also a se
 
 ## Configuration
 
-Make sure you have access to the hokieprivacy repo on sczi
-
 Run 'git submodule init && git submodule update'
 
-Clone ssh://git@sczi.vtluug.org:8000/hokieprivacy to docker-hugo/site
+Clone https://github.com/vtluug/vtluug-site.git to docker-hugo/site
 
 
 ## Running it
