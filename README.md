@@ -25,9 +25,8 @@ In this repo 'app' refers to a collection of containers
 
 For webapps, ports 80 and 443 are used along with a service specific subdomain.
 
-For non-webapps, ports in 9000-9999 are used to expose (most) apps externally.
-* gitolite: 9000
-* minecraft: 9001
+For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
+* 9000: gitolite
 * dex: ???
 
 #### Internal Ports
