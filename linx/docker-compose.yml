@@ -8,4 +8,4 @@ services:
       - /nfs/cistern/docker/data/linx/files:/data/files
       - /nfs/cistern/docker/data/linx/meta:/data/meta
     ports:
-      - 127.0.0.1:702:8080
+      - 127.0.0.1:7002:8080

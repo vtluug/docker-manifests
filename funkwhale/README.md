@@ -1,12 +1,13 @@
-## Funkwhale
+# Funkwhale
+
+Guide: https://docs.funkwhale.audio/installation/docker.html
 
 
 
-### Configuration
+## Configuration
 
 Create the folder /nfs/cistern/docker/data/funkwhale to use for persistent data
 
-Follow https://docs.funkwhale.audio/installation/docker.html
 
 * We used the linked docker-compose.yml with the following modifications:
     * TODO
@@ -14,7 +15,7 @@ Follow https://docs.funkwhale.audio/installation/docker.html
     * TODO
 
 
-#### Importing music
+### Importing music
 
 Read https://docs.funkwhale.audio/importing-music.html first
 
@@ -24,6 +25,6 @@ We use in-place importing and symlink all other folders to this directory: TODO 
 
 
 
-### Running it
+## Running it
 
 RTFM (Seriously! There's a total of 5 commands to run)

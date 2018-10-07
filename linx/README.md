@@ -1,13 +1,14 @@
-## linx
+# linx
 
-Out instance of linx for linx.vtluug.org and linx.li
+Our instance of linx for linx.vtluug.org and linx.li
 
 
-### Configuration
+
+## Configuration
 
 Create the folders /nfs/cistern/docker/data/linx/{files,meta} for persistent data
 
 
-### Running it
+## Running it
 
 Run 'docker-compose up -d' as papatux

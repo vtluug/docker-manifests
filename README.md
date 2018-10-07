@@ -1,15 +1,15 @@
-## VTLUUG's collection of docker-compose manifests
+# VTLUUG's collection of docker-compose manifests
 
 In this repo 'app' refers to a collection of containers
 
 
-### How to use this repo
+## How to use this repo
 
 * Read each app's specific instructions for configuring and running the app
 * Read about the structure below
 
 
-### Structure of VTLUUG's Docker things
+## Structure of VTLUUG's Docker things
 
 * /nfs/cistern/docker/data/<app>: Where persistent data for a given app should go
     * Permissions are root:docker
@@ -19,18 +19,18 @@ In this repo 'app' refers to a collection of containers
 * Some apps also reference other directories, for example funkwhale uses /share for importing music. See the app-specific README for details
 
 
-#### Ports
+### Ports
 
-##### External Ports
+#### External Ports
 
 For webapps, ports 80 and 443 are used along with a service specific subdomain.
 
-For non-webapps, ports in 9000-10000 are used to expose apps externally.
+For non-webapps, ports in 9000-10000 are used to expose (most) apps externally.
 * gitolite: 9000
 * minecraft: 9001
 
 
-##### Internal Ports
+#### Internal Ports
 
 All of these apps are reverse-proxied through nginx:
 * 7000: vtluug-site
@@ -39,5 +39,5 @@ All of these apps are reverse-proxied through nginx:
 * 7003: hokieprivacy
 * 7004: funkwhale
 
-#### Apps to be implemented after main apps (in order of priority)
+### Apps to be implemented after main apps (in order of priority)
 wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, some monitoring things (elk, prometheous, portainer, watchtower, ???)
