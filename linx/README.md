@@ -13,4 +13,4 @@ Create the folders `/nfs/cistern/docker/data/linx/{files,meta}` for persistent d
 
 ## Running it
 
-Run `docker-compose up -d` as papatux.
+Run `docker-compose up -d`.

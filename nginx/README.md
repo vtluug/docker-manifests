@@ -11,4 +11,4 @@ Our reverse-proxy http(s) server.
 
 ## Running it
 
-Run `docker-compose up -d` as papatux.
+Run `docker-compose up -d`.

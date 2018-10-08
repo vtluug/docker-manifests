@@ -12,11 +12,10 @@ Nothing to see here :)
 
 ## Running it
 
-Run `docker-compose up -d` as papatux. (This automatically builds the image)
+Run `docker-compose up -d`. (This automatically builds the image)
 
 
 ### Site content changes
 
 The site needs to be rebuilt each time the content changes:
-* Run `docker-compose build`
-* Run `docker-compose up --force-recreate -d`
+Run `docker-compose build && docker-compose up --force-recreate -d`.

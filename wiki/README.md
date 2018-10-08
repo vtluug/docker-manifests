@@ -22,4 +22,4 @@ Create an '.env' file with the following variable defined:
 
 ## Running it
 
-Run `docker-compose up -d` as papatux.
+Run `docker-compose up -d`.
