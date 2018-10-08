@@ -17,5 +17,4 @@ Run `docker-compose up -d`. (This automatically builds the image)
 
 ### Site content changes
 
-The site needs to be rebuilt each time the content changes:
 Run `docker-compose build && docker-compose up --force-recreate -d`.

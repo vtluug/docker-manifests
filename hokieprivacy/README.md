@@ -4,7 +4,7 @@
 
 Base image: https://hub.docker.com/r/monachus/hugo/
 
-The site content is stored in sczi's gitolite repo.
+The site content is stored on sczi's gitolite instance.
 
 
 
@@ -22,5 +22,4 @@ Run `docker-compose up -d`. (This automatically builds the image)
 
 ### Site content changes
 
-The site needs to be rebuilt each time the content changes:
 Run `docker-compose build && docker-compose up --force-recreate -d`.
