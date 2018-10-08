@@ -2,9 +2,9 @@
 
 **Requires gitolite**
 
-Base image: https://github.com/oskapt/docker-hugo
+Base image: https://hub.docker.com/r/monachus/hugo/
 
-This app uses that repo as a submodule, and the actual site content is stored in gitolite.
+The site content is stored in sczi's gitolite repo.
 
 
 
@@ -12,11 +12,16 @@ This app uses that repo as a submodule, and the actual site content is stored in
 
 Make sure you have access to the hokieprivacy repo on sczi.
 
-Run `git submodule init && git submodule update`.
-
-Clone `ssh://git@sczi.vtluug.org:8000/hokieprivacy` to `docker-hugo/site`.
+Clone `ssh://git@sczi.vtluug.org:9000/hokieprivacy` to the folder `site`.
 
 
 ## Running it
 
-Run `docker-compose up -d` as papatux.
+Run `docker-compose up -d` as papatux. (This automatically builds the image)
+
+
+### Site content changes
+
+The site needs to be rebuilt each time the content changes:
+* Run `docker-compose build`
+* Run `docker-compose up --force-recreate -d`

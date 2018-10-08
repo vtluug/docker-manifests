@@ -1,18 +1,22 @@
 # vtluug-site
 
-Base image: https://github.com/oskapt/docker-hugo
+Base image: https://hub.docker.com/r/monachus/hugo/
 
-This app uses that repo as a submodule, and the actual site content is also a separate repo.
-
+The site content is stored in `./site`.
 
 
 ## Configuration
 
-Run `git submodule init && git submodule update`.
-
-Clone `https://github.com/vtluug/vtluug-site.git` to `docker-hugo/site`.
+Nothing to see here :)
 
 
 ## Running it
 
-Run `docker-compose up -d` as papatux.
+Run `docker-compose up -d` as papatux. (This automatically builds the image)
+
+
+### Site content changes
+
+The site needs to be rebuilt each time the content changes:
+* Run `docker-compose build`
+* Run `docker-compose up --force-recreate -d`
