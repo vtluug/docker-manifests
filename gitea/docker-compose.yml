@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  web:
+    restart: always
+    depends_on: db
+    image: gitea/gitea:1.5.2
+    volumes:
+      - /nfs/cistern/docker/data/gitea/data:/data
+    ports:
+      - "3000:3000"
+      - "22:22"
+  db:
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=changeme
+      - MYSQL_DATABASE=gitea
+      - MYSQL_USER=gitea
+      - MYSQL_PASSWORD=changeme
+    image: mariadb:10
+    volumes:
+        - /nfs/cistern/docker/data/gitea/db:/var/lib/mysql

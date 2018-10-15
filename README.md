@@ -2,6 +2,8 @@
 
 In this repo 'app' refers to a collection of containers
 
+We manage some images using docker hub. PM the sysadmin if you want to get added to our org there (or here on GH for that matter).
+
 
 ## How to use this repo
 
@@ -26,7 +28,7 @@ In this repo 'app' refers to a collection of containers
 For webapps, ports 80 and 443 are used along with a service specific subdomain.
 
 For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
-* 9000: gitolite
+* 9000: gitea (ssh)
 * dex: ???
 
 #### Internal Ports
@@ -34,10 +36,11 @@ For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 All of these apps are reverse-proxied through nginx:
 * 7000: vtluug-site
 * 7001: wiki
-* 7002: linx
-* 7003: hokieprivacy
-* 7004: funkwhale
+* 7002: gitea (web)
+* 7003: linx
+* 7004: hokieprivacy
+* 7005: funkwhale
 * dex: ???
 
 ### Apps to be implemented after main apps (in order of priority)
-dex, wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, some monitoring things (elk, prometheous, portainer, watchtower, ???)
+dex, wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, caddy (for QUIC), some monitoring things (elk, prometheous, portainer, watchtower, ???)
