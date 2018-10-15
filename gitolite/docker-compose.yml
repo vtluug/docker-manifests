@@ -9,5 +9,5 @@ services:
       - /nfs/cistern/docker/data/gitolite/keys:/etc/ssh/keys
       - /nfs/cistern/docker/data/gitolite/git:/var/lib/git
     ports:
-      - 128.173.88.78:8000:22
-      - 2607:b400:6:cc80:0:aff:fe62:b:8000:22
+      - 128.173.88.78:9000:22
+      - 2607:b400:6:cc80:0:aff:fe62:b:9000:22

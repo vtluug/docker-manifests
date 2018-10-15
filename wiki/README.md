@@ -16,7 +16,7 @@ Create the folders `/nfs/cistern/docker/data/wiki/images/{vtluug,gobblerpedia}` 
 
 If you don't have a LocalSettings fie, see the base image link for how to set it up.
 
-Create an '.env' file with the following variable defined:
+Create `.env` in the current directory with the following variable defined:
 * `MYSQL_PASSWORD`: database password, found in admin repo on sczi
 
 

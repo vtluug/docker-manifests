@@ -13,7 +13,7 @@ Create the folder `/nfs/cistern/docker/data/funkwhale` to use for persistent dat
 
 * We used the linked `docker-compose.yml` with the following modifications:
     * TODO
-* We use the linked `.env` file with the following modifications:
+Create `.env` in the current directory with the following variable defined:
     * TODO
 
 
