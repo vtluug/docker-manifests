@@ -12,7 +12,7 @@ Our instance of mediawiki for wiki.vtluug.org and gobblerpedia.org.
 
 Read the base image link.
 
-Create the folders `/nfs/cistern/docker/data/wiki/images/{vtluug,gobblerpedia}` for persistent data.
+Create the folders `/nfs/cistern/docker/data/wiki/images/{vtluug,gobblerpedia}` and `/nfs/cistern/docker/data/wiki/mysql` for persistent data.
 
 Create `.env` in the current directory with the following variable defined:
 * `MYSQL_PASSWORD`: database password, found in vtluug-admin repo

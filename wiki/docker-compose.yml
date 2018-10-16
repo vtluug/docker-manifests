@@ -15,7 +15,8 @@ services:
     restart: unless-stopped
     env_file: .env
     environment:
-      MYSQL_DATABASE: mediawiki
-      MYSQL_USER: mediawikiuser
-      MYSQL_RANDOM_ROOT_PASSWORD: yes
+      MYSQL_DATABASE: mw
+      MYSQL_USER: mw_user
     image: mariadb
+    volumes:
+      - /nfs/cistern/docker/data/wiki/mysql:/var/lib/mysql
