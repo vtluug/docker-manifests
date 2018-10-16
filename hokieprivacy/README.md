@@ -12,7 +12,8 @@ The site content is stored on sczi's gitolite instance.
 
 Make sure you have access to the hokieprivacy repo on sczi.
 
-Clone `ssh://git@sczi.vtluug.org:9000/hokieprivacy` to the folder `site`.
+
+Clone `/nfs/cistern/docker/data/gitolite/git/repositories/hokieprivacy.git` to `./site` as root.
 
 
 ## Running it
