@@ -6,6 +6,8 @@ services:
     environment:
       - USER_UID=0
       - USER_GID=0
+      - APP_NAME=VTLUUG Gitea
+      - RUN_MODE=prod
     image: gitea/gitea:latest
     volumes:
       - /nfs/cistern/docker/data/gitea/data:/data
