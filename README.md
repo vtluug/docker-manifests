@@ -41,5 +41,9 @@ All of these apps are reverse-proxied through nginx:
 * 7004: funkwhale
 * dex: ???
 
+Other apps also use internal ports for communication:
+* 6000: mariadb for wiki
+
+
 ### Apps to be implemented after main apps (in order of priority)
 dex, wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, caddy (for QUIC), some monitoring things (elk, prometheous, portainer, watchtower, ???)
