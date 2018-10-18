@@ -3,13 +3,15 @@ version: '3'
 services:
   mediawiki:
     restart: unless-stopped
+    depends_on:
+      - database
     image: mediawiki
     volumes:
       - /nfs/cistern/docker/data/wiki/images:/var/www/html/images
-      - ./config/LocalSettings.php:/var/www/LocalSettings.php
-      - ./config/LocalSettings_vtluug.php:/var/www/LocalSettings_vtluug.php
-      - ./config/LocalSettings_gobblerpedia.php:/var/www/LocalSettings_gobblerpedia.php
-      - ./config/secrets.php:/var/www/secrets.php
+      - ./config/LocalSettings.php:/var/www/LocalSettings.php:ro
+      - ./config/LocalSettings_vtluug.php:/var/www/LocalSettings_vtluug.php:ro
+      - ./config/LocalSettings_gobblerpedia.php:/var/www/LocalSettings_gobblerpedia.php:ro
+      - ./config/secrets.php:/var/www/secrets.php:ro
     ports:
       - 127.0.0.1:7001:80
   database:

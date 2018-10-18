@@ -23,21 +23,11 @@ $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 # }}}
 
 # Wiki-specific settings {{{
-# Yes, I know we could included the secrets file multiple times but this way
-#  all the secret variables are here in 1 place.
-# Same things for wgDBprefix. Since all DB config is done in this file it's
-#  better to have that info here.
+# Wiki specific files are loaded at end of file
 if ($_SERVER['SERVER_NAME'] == 'gobblerpedia.org') {
-    require_once('LocalSettings_gobblerpedia.php');
     $wgDBprefix = 'gobblerpedia';
-    $wgSecretKey = $secret_gp_secretkey;
-    $wgUpgradeKey = $secret_gp_upgradekey;
 } else {
     $wgDBprefix = 'vtluug';
-    require_once('LocalSettings_vtluug.php');
-    $wgDBprefix = 'gobblerpedia';
-    $wgSecretKey = $secret_gp_secretkey;
-    $wgUpgradeKey = $secret_gp_upgradekey;
 }
 # }}}
 
@@ -63,18 +53,33 @@ $wgEnotifWatchlist = false; # UPO
 $wgEmailAuthentication = true;
 # }}}
 
+## The URL base path to the directory containing the wiki;
+## defaults for all runtime URL paths are based off of this.
+## For more information on customizing the URLs please see:
+## http://www.mediawiki.org/wiki/Manual:Short_URL
+$wgScriptPath       = '/w';
+$wgArticlePath      = "/wiki/$1";
+$wgUsePathInfo      = true;
+
+## The URL path to static resources (images, scripts, etc.)
+$wgResourceBasePath = $wgScriptPath
+
 ## Shared memory settings
 $wgMainCacheType = CACHE_NONE;
 $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = false;
+$wgEnableUploads = true;
+$wgUploadDirectory = "$IP/images/$wgDBprefix";
+$wgUploadPath = $wgUploadDirectory;
 $wgUseImageMagick = true;
-$wgImageMagickConvertCommand = "/usr/bin/convert";
+$wgImageMagickConvertCommand = '/usr/bin/convert';
+$wgFileExtensions[] = 'svg';
+$wgSVGConverter = 'rsvg';
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
-$wgUseInstantCommons = false;
+$wgUseInstantCommons = true;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
@@ -84,25 +89,39 @@ $wgPingback = true;
 ## If you use ImageMagick (or any other shell command) on a
 ## Linux server, this will need to be set to the name of an
 ## available UTF-8 locale
-$wgShellLocale = "C.UTF-8";
+$wgShellLocale = 'C.UTF-8';
 
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
-#$wgCacheDirectory = "$IP/cache";
+$wgCacheDirectory = "$IP/cache/$wgDBprefix";
 
 # Site language code, should be one of the list in ./languages/data/Names.php
-$wgLanguageCode = "en";
+$wgLanguageCode = 'en';
 
 # Changing this will log out all existing sessions.
-$wgAuthenticationTokenVersion = "1";
+$wgAuthenticationTokenVersion = '1';
 
-# AntiSpoof extension (https://www.mediawiki.org/wiki/Extension:AntiSpoof)
-wfLoadExtension('AntiSpoof');
 
-# AbuseFilter extension (https://www.mediawiki.org/wiki/Extension:AbuseFilter) {{{
+# Don't use rel='nofollow' as it doesn't actually prevent spam
+$wgNoFollowLinks = false;
+
+# Debugging {{{
+# Log everything to stdout to since we're using Docker
+$wgDebugLogFile = 'php://stdout';
+$wgDBerrorLog = 'php://stderr';
+
+# Show SQL errors to user instead of "(SQL query hidden)" message
+#$wgShowSQLErrors = true;
+#$wgDebugDumpSql = true;
+# }}}
+
+# Path to the GNU diff3 utility. Used for conflict resolution.
+$wgDiff3 = '/usr/bin/diff3';
+
+# Extensions {{{
+# AbuseFilter
 wfLoadExtension('AbuseFilter');
-
 $wgGroupPermissions['sysop']['abusefilter-modify'] = true;
 $wgGroupPermissions['*']['abusefilter-log-detail'] = true;
 $wgGroupPermissions['*']['abusefilter-view'] = true;
@@ -110,30 +129,30 @@ $wgGroupPermissions['*']['abusefilter-log'] = true;
 $wgGroupPermissions['sysop']['abusefilter-private'] = true;
 $wgGroupPermissions['sysop']['abusefilter-modify-restricted'] = true;
 $wgGroupPermissions['sysop']['abusefilter-revert'] = true;
-
 $wgAbuseFilterEmergencyDisableThreshold = array('default' => 1.00);
-# }}}
 
-# CategoryTree extension {{{
+# AntiSpoof
+wfLoadExtension('AntiSpoof');
+
+# CategoryTree
 $wgUseAjax = true;
 wfLoadExtension('CategoryTree');
+
+# Cite
+wfLoadExtension('Cite');
+
+# TODO: OIDC (w/ dex)
+
+# ParserFunctions
+wfLoadExtension('ParserFunctions');
+$wgPFEnableStringFunctions = true;
+
+# Addition wiki-specific skins included in specific LocalSettings file
 # }}}
 
-# Don't use rel='nofollow' as it doesn't actually prevent spam
-$wgNoFollowLinks = false;
-
-# Log everything to stdout to since we're using Docker
-$wgDebugLogFile = fopen('php://stdout', 'w');
-
-# SQL Debugging {{{
-#$wgShowSQLErrors = true;
-#$wgDebugDumpSql = true;
-# }}}
-
-# Path to the GNU diff3 utility. Used for conflict resolution.
-$wgDiff3 = "/usr/bin/diff3";
-
-# Skins {{{
+# Skins
 wfLoadSkin('Timeless');
-$wgDefaultSkin('timeless');
-# }}}
+$wgDefaultSkin = 'timeless';
+
+# Load wiki specific settings
+require_once("LocalSettings_$wgDBprefix.php");
