@@ -1,0 +1,20 @@
+## Based on version below; but heavily modified for LUUG
+## Version 2018/09/12 - Changelog: https://github.com/linuxserver/docker-letsencrypt/commits/master/root/defaults/default
+
+# Redirect unknown HTTP traffic to HTTPS
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+    
+    return 301 https://vtluug.org$request_uri;
+}
+
+# Return 404 for unknown HTTPS traffic
+server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
+    server_name _;
+
+    return 404;
+}

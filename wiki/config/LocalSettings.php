@@ -15,7 +15,7 @@ $wgDBtype = 'mysql';
 $wgDBserver = 'wiki_database_1';
 $wgDBname = 'mw';
 $wgDBuser = 'mw_user';
-$wgDBpassword = $secret_db_pw;
+$wgDBpassword = getenv('MYSQL_PASSWORD');
 # wgDBprefix also set for each specific wiki
 
 # MySQL table options to use during installation or update
@@ -98,6 +98,10 @@ $wgCacheDirectory = "$IP/cache/$wgDBprefix";
 
 # Site language code, should be one of the list in ./languages/data/Names.php
 $wgLanguageCode = 'en';
+
+# Secret & Upgrade keys
+$wgSecretKey = getenv('MW_SECRET_KEY');
+$wgUpgradeKey = getenv('MW_UPGRADE_KEY');
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = '1';

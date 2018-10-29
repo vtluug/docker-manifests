@@ -1,13 +1,14 @@
 # nginx
 
-Base image: https://hub.docker.com/_/nginx
+Base image: https://hub.docker.com/linuxserver/letsencrypt
 
-Our reverse-proxy http(s) server.
+Our reverse-proxy https server.
 
 
 
 ## Configuration
 
+TODO: fail2ban ?
 
 ## Running it
 

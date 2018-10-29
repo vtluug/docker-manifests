@@ -1,0 +1,15 @@
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name linx.li www.linx.li;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 100M;
+
+    location / {
+        fastcgi_pass 127.0.0.1:7003;
+        include /etc/nginx/fastcgi_params;
+    }
+}
