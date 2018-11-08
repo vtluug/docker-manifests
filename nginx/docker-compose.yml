@@ -7,19 +7,22 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      PGID: 0
-      PUID: 0
+      PGID: 1000
+      PUID: 1000
       EMAIL: sysadmin@vtluug.org
       URL: vtluug.org
-      SUBDOMAINS: www,sczi,www.sczi,www.funkwhale,funkwhale,www.bash,bash,www.map,map,www.jitsi,jitsi,www.elk,elk
-      EXTRA_DOMAINS: www.linx.li,linx.li,www.hokieprivacy.org,hokieprivacy.org
+      SUBDOMAINS: www,bash,www.bash,funkwhale,www.funkwhale,linx,www.linx,sczi,www.sczi,wiki,www.wiki
+      EXTRA_DOMAINS: gobblerpedia.org,www.gobblerpedia.org,hokieprivacy.org,www.hokieprivacy.org,linx.li,www.linx.li
       VALIDATION: html # TODO Switch to dns + gandi api once pr is merged
       TZ: America/New_York
     volumes:
       - /nfs/cistern/docker/data/nginx:/config
-      - ./site-confs:/config/nginx/site-confs:ro
-#    ports:
+      - ./default:/config/nginx/site-confs/default:ro
+      - ./sites:/config/nginx/sites:ro
+      - /nfs/cistern/files:/files:ro
+      - /nfs/cistern/home:/users:ro
+    ports:
 #      - 128.173.88.78:80:80
 #      - 128.173.88.78:443:443
-#      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:80:80
-#      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:443:443
+      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:80:80
+      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:443:443

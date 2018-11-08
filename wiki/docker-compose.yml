@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     depends_on:
       - database
-    image: mediawiki
+    image: mediawiki:lts
     volumes:
       - /nfs/cistern/docker/data/wiki/images:/var/www/html/images
       - ./config/LocalSettings.php:/var/www/LocalSettings.php:ro

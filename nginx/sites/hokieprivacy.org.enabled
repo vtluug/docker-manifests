@@ -1,0 +1,23 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name gobblerpedia.org www.gobblerpedia.org;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name gobblerpedia.org www.gobblerpedia.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 1M;
+
+    location / {
+        include /config/nginx/proxy.conf;
+        proxy_pass http://localhost:7004;
+    }
+}

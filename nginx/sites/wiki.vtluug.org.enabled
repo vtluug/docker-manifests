@@ -1,0 +1,21 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name wiki.vtluug.org www.wiki.vtluug.org;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name wiki.vtluug.org www.wiki.vtluug.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 5M;
+
+    # The 1st rewrite is kept so old wiki links don't break (I think)
+    rewrite ^/(wiki|w)/(.*)$ https://vtluug.org/$1/$2 permanent;
+    return 301 https://vtluug.org/wiki/Main_page;
+}
