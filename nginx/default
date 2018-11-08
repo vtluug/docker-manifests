@@ -2,7 +2,7 @@
 ## Version 2018/09/12 - Changelog: https://github.com/linuxserver/docker-letsencrypt/commits/master/root/defaults/default
 
 # This is the main file that will be pe present no matter what
-# Individual sites are specified in sites/*.enabled (/config/nginx/sites*.enabled in container)
+# Individual sites are specified in sites/*.enabled (/config/nginx/sites/*.enabled in container)
 
 # Redirect unknown HTTP traffic to https://vtluug.org
 server {
