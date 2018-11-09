@@ -11,8 +11,6 @@ services:
     volumes:
       - /nfs/cistern/docker/data/linx/files:/data/files
       - /nfs/cistern/docker/data/linx/meta:/data/meta
-    ports:
-      - 127.0.0.1:7003:8080
 
 networks:
   default:

@@ -7,15 +7,13 @@ services:
       - database
     image: mediawiki:lts
     networks:
-      - vtluug-proxy
+      - vtluug-network
     volumes:
       - /nfs/cistern/docker/data/wiki/images:/var/www/html/images
       - ./config/LocalSettings.php:/var/www/LocalSettings.php:ro
       - ./config/LocalSettings_vtluug.php:/var/www/LocalSettings_vtluug.php:ro
       - ./config/LocalSettings_gobblerpedia.php:/var/www/LocalSettings_gobblerpedia.php:ro
       - ./config/secrets.php:/var/www/secrets.php:ro
-    ports:
-      - 127.0.0.1:7001:80
   database:
     restart: unless-stopped
     env_file: .env

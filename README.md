@@ -23,20 +23,22 @@ We manage some images using docker hub. PM the sysadmin if you want to get added
 
 #### External Ports
 
-For webapps, ports 80 and 443 are used along with a service specific subdomain.
+The `nginx` container exposes ports 80 and 443 and acts as a reverse-proxy for all other sites.
 
 For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 * 9000: gitolite
 
-#### Internal Ports
+#### Internal container ports
 
-All of these apps are reverse-proxied through nginx:
-* 7000: vtluug-site¹
-* 7001: wiki
-* 7002: dex
-* 7003: linx
-* 7004: dex
-* 7005: funkwhale
+Containers proxied through nginx:
+* vtluug-site: 1313¹ 
+* wiki: 80
+* dex: ??? TODO
+* linx: 8080
+* funkwhale: ???
+
+We also run some static servies directly served through nginx.
+
 
 ¹May be converted to a static site instead.
 
