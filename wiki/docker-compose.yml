@@ -6,6 +6,8 @@ services:
     depends_on:
       - database
     image: mediawiki:lts
+    networks:
+      - vtluug-proxy
     volumes:
       - /nfs/cistern/docker/data/wiki/images:/var/www/html/images
       - ./config/LocalSettings.php:/var/www/LocalSettings.php:ro

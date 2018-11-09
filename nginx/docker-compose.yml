@@ -27,3 +27,8 @@ services:
 #      - 128.173.88.78:443:443
       - 2607:b400:0006:cc80:0000:0aff:fe62:000b:80:80
       - 2607:b400:0006:cc80:0000:0aff:fe62:000b:443:443
+
+networks:
+  default:
+    external:
+      name: vtluug-network

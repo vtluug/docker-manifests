@@ -17,7 +17,7 @@ We manage some images using docker hub. PM the sysadmin if you want to get added
     * Permissions are `root:docker`, `775`
 * `/nfs/cistern/docker/apps`: Location of all app configs. Aka this repo.
 * Some apps also reference other directories, for example funkwhale uses the NFS share for importing music. See the app-specific README for details
-
+* The `vtluug-network` docker network is used for nginx reverse proxying.
 
 ### Ports
 
@@ -31,13 +31,14 @@ For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 #### Internal Ports
 
 All of these apps are reverse-proxied through nginx:
-* 7000: vtluug-site
+* 7000: vtluug-site¹
 * 7001: wiki
 * 7002: dex
 * 7003: linx
-* 7004: hokieprivacy
-* 7005: dex
-* 7006: funkwhale
+* 7004: dex
+* 7005: funkwhale
+
+¹May be converted to a static site instead.
 
 ### Apps to be implemented after main apps (in order of priority)
 wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, caddy (for QUIC), some monitoring things (elk, prometheous, portainer, watchtower, ???)
