@@ -4,10 +4,7 @@ services:
   linx:
     restart: unless-stopped
     image: andreimarcu/linx-server
-    command:
-      - -sitename=linx
-      - -allowhotlink
-      - -fastcgi
+    command: ['-sitename=linx', '-allowhotlink', '-fastcgi']
     volumes:
       - /nfs/cistern/docker/data/linx/files:/data/files
       - /nfs/cistern/docker/data/linx/meta:/data/meta

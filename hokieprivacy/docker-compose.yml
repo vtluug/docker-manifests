@@ -3,6 +3,8 @@ version: '3'
 services:
   hokieprivacy:
     restart: unless-stopped
-    build: .
+    image: monachus/hugo
+    command: ['hugo', 'server', '-d', '/usr/share/nginx/html']
     volumes:
+      - ./site:/usr/share/blog:ro
       - /nfs/cistern/docker/data/hokieprivacy:/usr/share/nginx/html
