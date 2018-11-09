@@ -3,7 +3,7 @@ server {
     listen [::]:80;
     server_name gobblerpedia.org www.gobblerpedia.org;
 
-    return 301 https://$host$request_uri;
+    return 301 https://gobblerpedia.org$request_uri;
 }
 
 server {

@@ -3,7 +3,7 @@ server {
     listen [::]:80;
     server_name wiki.vtluug.org www.wiki.vtluug.org;
 
-    return 301 https://$host$request_uri;
+    return 301 https://wiki.vtluug.org$request_uri;
 }
 
 server {
@@ -15,7 +15,7 @@ server {
 
     client_max_body_size 5M;
 
-    # The 1st rewrite is kept so old wiki links don't break (I think)
+    # The 1st rewrite is kept so old wiki links don't break (most likely, not 100% sure...)
     rewrite ^/(wiki|w)/(.*)$ https://vtluug.org/$1/$2 permanent;
     return 301 https://vtluug.org/wiki/Main_page;
 }

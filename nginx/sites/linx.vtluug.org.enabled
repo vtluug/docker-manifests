@@ -3,7 +3,7 @@ server {
     listen [::]:80;
     server_name linx.vtluug.org www.linx.vtluug.org;
 
-    return 301 https://$host$request_uri;
+    return 301 https://linx.li$request_uri;
 }
 
 server {
@@ -14,10 +14,5 @@ server {
     # ssl conf
     include /config/nginx/ssl.conf;
 
-    client_max_body_size 100M;
-
-    location / {
-        fastcgi_pass 127.0.0.1:7003;
-        include /etc/nginx/fastcgi_params;
-    }
+    return 301 https://linx.li$request_uri;
 }

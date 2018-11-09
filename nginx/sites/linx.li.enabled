@@ -3,7 +3,7 @@ server {
     listen [::]:80;
     server_name linx.li www.linx.li;
 
-    return 301 https://$host$request_uri;
+    return 301 https://linx.li$request_uri;
 }
 
 server {
@@ -17,7 +17,8 @@ server {
     client_max_body_size 100M;
 
     location / {
-        fastcgi_pass 127.0.0.1:7003;
+        # Proxy to linx container
+        fastcgi_pass linx_linx_1:8080;
         include /etc/nginx/fastcgi_params;
     }
 }

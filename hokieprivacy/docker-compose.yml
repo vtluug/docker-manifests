@@ -4,5 +4,7 @@ services:
   hokieprivacy:
     restart: unless-stopped
     build: .
+    volumes:
+      - /nfs/cistern/docker/data/hokieprivacy:/usr/share/nginx/html
     ports:
       - 127.0.0.1:7004:1313

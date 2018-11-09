@@ -3,7 +3,7 @@ server {
     listen [::]:80;
     server_name hokieprivacy.org www.hokieprivacy.org;
 
-    return 301 https://$host$request_uri;
+    return 301 https://hokieprivacy.org$request_uri;
 }
 
 server {
@@ -17,7 +17,10 @@ server {
     client_max_body_size 1M;
 
     location / {
-        include /config/nginx/proxy.conf;
-        proxy_pass http://localhost:7004;
+        root /hokieprivacy;
+        index index.html;
     }
+
+    # '/assets' not found anywhere in current code... most likely for old code?
+    rewrite ^/assets/files(/.*)$ /files$1 permanent;
 }
