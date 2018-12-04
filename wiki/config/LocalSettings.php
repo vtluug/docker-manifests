@@ -1,9 +1,6 @@
 <?php
-# SMTP, db, api passwords
-require_once('/var/www/secrets.php');
-
 # Protect against web entry
-if (!defined('MEDIAWIKI') {
+if (!defined('MEDIAWIKI')) {
     exit;
 }
 
@@ -38,7 +35,7 @@ $wgSMTP = array(
  'port'     => 25,
  'auth'     => true,
  'username' => 'wiki-admin',
- 'password' => $secret_mail_pw
+ 'password' => getenv('SMTP_PASSWORD')
 );
 
 ## UPO = user preference option
@@ -62,7 +59,7 @@ $wgArticlePath      = "/wiki/$1";
 $wgUsePathInfo      = true;
 
 ## The URL path to static resources (images, scripts, etc.)
-$wgResourceBasePath = $wgScriptPath
+$wgResourceBasePath = $wgScriptPath;
 
 ## Shared memory settings
 $wgMainCacheType = CACHE_NONE;
