@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  archivewarrior:
+    restart: unless-stopped
+    image: archiveteam/warrior
+    volumes:
+      - /nfs/cistern/docker/data/archivewarrior/config.json:/home/warrior/projects/config.json
+      - /nfs/cistern/docker/data/archivewarrior/data:/data/data
+    ports:
+      - 127.0.0.1:9001:8001
+      - ::1:9001:8001

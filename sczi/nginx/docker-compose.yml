@@ -10,7 +10,7 @@ services:
       PGID: 1000
       PUID: 1000
       EMAIL: sysadmin@vtluug.org
-      # URL field be working since nginx only starts if letsencrypt works
+      # URL field must be working since nginx only starts if letsencrypt works
       URL: vtluug.org
       SUBDOMAINS: www,bash,www.bash,funkwhale,www.funkwhale,linx,www.linx,sczi,www.sczi,wiki,www.wiki
       EXTRA_DOMAINS: gobblerpedia.org,www.gobblerpedia.org,hokieprivacy.org,www.hokieprivacy.org,linx.li,www.linx.li

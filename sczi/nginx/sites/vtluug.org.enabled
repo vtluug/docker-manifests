@@ -18,8 +18,7 @@ server {
 
     # Main site
     location / {
-        include /config/nginx/proxy.conf;
-        proxy_pass http://localhost:7000;
+        proxy_pass https://vtluug.github.io;
     }
 
     # Static files (including user homedirs) {{{
@@ -58,7 +57,7 @@ server {
     location ~ \.php$ {
         client_max_body_size 5M;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass 127.0.0.1:7001;
+        fastcgi_pass wiki_mediawiki_1:80;
         fastcgi_index index.php;
         include /etc/nginx/fastcgi_params;
     }

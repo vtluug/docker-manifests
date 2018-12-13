@@ -18,4 +18,4 @@ Clone `/nfs/cistern/docker/data/gitolite/git/repositories/hokieprivacy.git` to `
 
 ## Running it
 
-Run `docker-compose up -d` and stop it once it finishes. This generates static files in `/nfs/cisntern/docker/data/hokieprivacy/html` and updates it on any content changes.
+Run `docker-compose up -d`. This generates static files in `/nfs/cisntern/docker/data/hokieprivacy/html` and updates with any content changes to `./site`.

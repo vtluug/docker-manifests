@@ -1,14 +1,16 @@
 # VTLUUG's collection of docker-compose manifests
 
-In this repo 'app' refers to a collection of containers
+In this repo, 'app' refers to a collection of containers. App directories are organized based on the host where the app is run, then directories for each app.
 
 We manage some images using docker hub. PM the sysadmin if you want to get added to our org there (or here on GH for that matter).
+
 
 
 ## How to use this repo
 
 * Read each app's specific instructions for configuring and running the app
 * Read about the structure below
+
 
 
 ## Structure of VTLUUG's Docker things
@@ -19,6 +21,7 @@ We manage some images using docker hub. PM the sysadmin if you want to get added
 * Some apps also reference other directories, for example funkwhale uses the NFS share for importing music. See the app-specific README for details
 * The `vtluug-network` docker network is used for nginx reverse proxying.
 
+
 ### Ports
 
 #### External Ports
@@ -27,6 +30,8 @@ The `nginx` container exposes ports 80 and 443 and acts as a reverse-proxy for a
 
 For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 * 9000: gitolite
+* archivewarrior: 9001
+    * Only accessible via localhost on sczi
 
 #### Internal container ports
 
@@ -37,10 +42,11 @@ Containers proxied through nginx:
 * linx: 8080
 * funkwhale: ???
 
-We also run some static servies directly served through nginx.
+We also run some static servies directly served through nginx (hokieprivacy, /files, etc)
 
 
 ¹May be converted to a static site instead.
 
+
 ### Apps to be implemented after main apps (in order of priority)
-wadsworth, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, caddy (for QUIC), some monitoring things (elk, prometheous, portainer, watchtower, ???)
+wadsworth, tor, gopher, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, caddy (for QUIC), some monitoring things (elk, prometheous, portainer, watchtower, ???)

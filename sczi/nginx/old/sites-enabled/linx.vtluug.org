@@ -1,0 +1,70 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name linx.vtluug.org;
+    rewrite ^ https://linx.vtluug.org$request_uri permanent;
+}
+
+server {
+#tor
+    listen 127.0.0.1:8001;
+    access_log off;
+    error_log off;
+    root /srv/http/linx.vtluug.org;
+
+    client_max_body_size 2G;
+
+    location / {
+        fastcgi_pass 127.0.0.1:8099;
+        include fastcgi_params;
+    }
+    location /.well-known/acme-challenge {
+        root /srv/http/linx.vtluug.org/letsencrypt;
+        default_type text/plain;
+    }
+}
+
+
+server {
+    listen 443;
+    listen [::]:443;
+    server_name linx.vtluug.org
+    server_name_in_redirect off;
+
+    # TLS {{{
+    #ssl_certificate      /etc/nginx/certs/vtluug.org.wildcard.crt;
+    #ssl_certificate_key  /etc/nginx/certs/vtluug.org.wildcard.key;
+    ssl_certificate /etc/letsencrypt/live/linx.vtluug.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/linx.vtluug.org/privkey.pem;
+
+    ssl_session_timeout 5m;
+    ssl_session_cache   shared:SSL:10m;
+
+
+    ssl_protocols TLSv1.1 TLSv1.2;
+
+    ssl_ciphers 'ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!CAMELLIA:!DES:!MD5:!PSK:!RC4';
+
+    ssl_prefer_server_ciphers   on;
+    ssl_stapling on;
+
+    add_header Strict-Transport-Security "max-age=31536000; includeSubdomains;";
+
+    # }}}
+    client_max_body_size 100M;
+
+    root /srv/http/linx.vtluug.org;
+
+    location /.well-known/acme-challenge {
+	root /srv/http/linx.vtluug.org/letsencrypt;
+	default_type text/plain;
+    }
+
+
+    location / {
+    	rewrite ^ https://linx.li$request_uri permanent;
+    }
+
+}
+
+
