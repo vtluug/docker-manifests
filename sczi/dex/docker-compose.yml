@@ -3,7 +3,7 @@ version: '3'
 services:
   dex:
     restart: unless-stopped
-    image: quay.io/dexidp/dex:v2.12.0
+    image: quay.io/dexidp/dex:latest
     volumes:
         - /nfs/cistern/docker/data/dex/dex.db:/var/dex/dex.db
         - ./config.yml:/etc/dex/cfg/config.yml:ro
