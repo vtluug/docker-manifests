@@ -1,0 +1,47 @@
+# The base path of dex and the external name of the OpenID Connect service.
+# This is the canonical URL that all clients MUST use to refer to dex. If a
+# path is provided, dex's HTTP service will listen at a non-root URL.
+issuer: https://id.vtluug.org
+
+# The storage configuration determines where dex stores its state. Supported
+# options include SQL flavors and Kubernetes third party resources.
+#
+# See the storage document at Documentation/storage.md for further information.
+storage:
+  type: sqlite3
+  config:
+    file: /var/dex/dex.db
+
+# Configuration for the HTTP endpoints.
+web:
+  http: 0.0.0.0:5556
+
+# Configuration for telemetry
+telemetry:
+  http: 0.0.0.0:5558
+
+# Connectors
+connectors:
+- type: ldap
+  id: ldap
+  name: VTLUUG
+  config:
+    host: chimera.vtluug.org:636
+    rootCA: /etc/dex/tls/cfg/ldap_ca.crt
+    userSearch:
+      baseDN: dc=krb,dc=vtluug,dc=org
+      filter: '(objectClass=posixAccount)'
+      username: uid
+      idAttr: DN
+      emailAttr: mail
+      nameAttr: gecos
+    groupSearch:
+      baseDN: dc=krb,dc=vtluug,dc=org
+      filter: '(objectClass=posixGroup)'
+      userAttr: uid
+      groupAttr: memberUid
+      nameAttr: cn
+
+oauth2:
+  skipApprovalScreen: true
+enablePasswordDB: false
