@@ -16,24 +16,27 @@ server {
 
     client_max_body_size 1M;
 
-    # Wiki stuff (slightly different vs luugwiki) {{{
-    location ~ \.php$ {
-        client_max_body_size 5M;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        fastcgi_pass wiki_mediawiki_1:80;
-        fastcgi_index index.php;
-        include /etc/nginx/fastcgi_params;
+    # Wiki stuff {{{
+    location / {
+        include /config/nginx/proxy.conf
+        proxy_pass http://wiki_mediawiki_1:80;
     }
-
+   
     # Displayed path is /wiki, but actual path is /w
     # See $wgScriptPath & $wgArticle path in MW config
-    location ~ ^/wiki {
-        rewrite ^/$ /w/index.php last;
-        rewrite ^/([^?]*)(?:\?(.*))? /w/index.php?title=$1&$2 last;
+    location /wiki {
+        rewrite ^/wiki$ /w/index.php last;
+        rewrite ^/wiki/(.*)$ /w/index.php/$1 last;
     }
-    
-    # Cache images & skins
-    location ~ ^/w/(images|skins) {
+   
+    # Redirect & cache images
+    location /w/images {
+        alias /wiki-images/vtluug;
+        expires 30d;
+    }
+
+    # Cache skins
+    location /w/skins {
         expires 30d;
     }
 

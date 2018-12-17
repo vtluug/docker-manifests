@@ -81,4 +81,5 @@ server {
     location /w/cache {
         deny all;
     }
+    # }}}
 }
