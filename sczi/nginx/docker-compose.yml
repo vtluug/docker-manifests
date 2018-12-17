@@ -20,6 +20,7 @@ services:
       - /nfs/cistern/docker/data/nginx:/config
       - ./default:/config/nginx/site-confs/default:ro
       - ./sites:/config/nginx/sites:ro
+      - /nfs/cistern/docker/data/wiki/images:/wiki-images:ro
       - /nfs/cistern/docker/data/hokieprivacy:/hokieprivacy:ro
       - /nfs/cistern/files:/files:ro
       - /nfs/cistern/home:/users:ro

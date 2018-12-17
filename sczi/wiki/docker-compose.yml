@@ -7,22 +7,23 @@ services:
       - database
     env_file: mediawiki.env
     image: pew9000/mediawiki-docker
-    command: php /var/www/html/w/maintenance/update.php && apache2-foreground
+    # Wait for db to be ready (yes, we *should* do this better but sleep works)
+    command: ['/bin/sh', '-c', 'sleep 7 && php /var/www/html/w/maintenance/update.php --quick ; apache2-foreground']
     networks:
       - default
       - vtluug-network
     volumes:
       - /nfs/cistern/docker/data/wiki/images:/var/www/html/w/images
-      - ./config/LocalSettings.php:/var/www/w/LocalSettings.php:ro
-      - ./config/LocalSettings_vtluug.php:/var/www/w/LocalSettings_vtluug.php:ro
-      - ./config/LocalSettings_gobblerpedia.php:/var/wwww/w/LocalSettings_gobblerpedia.php:ro
+      - ./config/LocalSettings.php:/var/www/html/w/LocalSettings.php:ro
+      - ./config/LocalSettings_vtluug.php:/var/www/html/w/LocalSettings_vtluug.php:ro
+      - ./config/LocalSettings_gobblerpedia.php:/var/www/html/w/LocalSettings_gobblerpedia.php:ro
+      - /nfs/tank/scratch:/tmp/tank:ro
   database:
     restart: unless-stopped
     env_file: database.env
     environment:
       MYSQL_DATABASE: mw
       MYSQL_USER: mw_user
-      MYSQL_RANDOM_ROOT_PASSWORD: yes
     image: mariadb
     volumes:
       - /nfs/cistern/docker/data/wiki/mysql:/var/lib/mysql

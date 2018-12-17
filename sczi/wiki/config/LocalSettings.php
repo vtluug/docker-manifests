@@ -8,10 +8,10 @@ if (!defined('MEDIAWIKI')) {
 $wgDisableOutputCompression = true;
 
 # Database {{{
-$wgDBtype = 'mysql';
-$wgDBserver = 'wiki_database_1';
-$wgDBname = 'mw';
-$wgDBuser = 'mw_user';
+$wgDBtype     = 'mysql';
+$wgDBserver   = 'wiki_database_1';
+$wgDBname     = 'mw';
+$wgDBuser     = 'mw_user';
 $wgDBpassword = getenv('MYSQL_PASSWORD');
 # wgDBprefix also set for each specific wiki
 
@@ -39,14 +39,14 @@ $wgSMTP = array(
 );
 
 ## UPO = user preference option
-$wgEnableEmail = true;
-$wgEnableUserEmail = true; # UPO
+$wgEnableEmail         = true;
+$wgEnableUserEmail     = true; # UPO
 
-$wgEmergencyContact = 'wiki-admin@vtluug.org';
-$wgPasswordSender = 'wiki-admin@vtluug.org';
+$wgEmergencyContact    = 'wiki-admin@vtluug.org';
+$wgPasswordSender      = 'wiki-admin@vtluug.org';
 
-$wgEnotifUserTalk = false; # UPO
-$wgEnotifWatchlist = false; # UPO
+$wgEnotifUserTalk      = false; # UPO
+$wgEnotifWatchlist     = false; # UPO
 $wgEmailAuthentication = true;
 # }}}
 
@@ -54,29 +54,29 @@ $wgEmailAuthentication = true;
 ## defaults for all runtime URL paths are based off of this.
 ## For more information on customizing the URLs please see:
 ## http://www.mediawiki.org/wiki/Manual:Short_URL
-$wgScriptPath       = '/w';
-$wgArticlePath      = "/wiki/$1";
-$wgUsePathInfo      = true;
+$wgScriptPath  = '/w';
+$wgArticlePath = "/wiki/$1";
+$wgUsePathInfo = true;
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
 
 ## Shared memory settings
-$wgMainCacheType = CACHE_NONE;
+$wgMainCacheType    = CACHE_NONE;
 $wgMemCachedServers = [];
 
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
-$wgEnableUploads = true;
-$wgUploadDirectory = "$IP/images/$wgDBprefix";
-$wgUploadPath = $wgUploadDirectory;
-$wgUseImageMagick = true;
+$wgEnableUploads             = true;
+$wgUploadPath                = "{$wgScriptPath}/images";
+$wgUploadDirectory           = "{$IP}/images/{$wgDBprefix}";
+$wgUseImageMagick            = true;
 $wgImageMagickConvertCommand = '/usr/bin/convert';
-$wgFileExtensions[] = 'svg';
-$wgSVGConverter = 'rsvg';
+$wgFileExtensions[]          = 'svg';
+$wgSVGConverter              = 'rsvg';
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
-$wgUseInstantCommons = true;
+#$wgUseInstantCommons = true;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
@@ -91,18 +91,17 @@ $wgShellLocale = 'C.UTF-8';
 ## Set $wgCacheDirectory to a writable directory on the web server
 ## to make your wiki go slightly faster. The directory should not
 ## be publically accessible from the web.
-$wgCacheDirectory = "$IP/cache/$wgDBprefix";
+$wgCacheDirectory = "{$IP}/cache/{$wgDBprefix}";
 
 # Site language code, should be one of the list in ./languages/data/Names.php
 $wgLanguageCode = 'en';
 
 # Secret & Upgrade keys
-$wgSecretKey = getenv('MW_SECRET_KEY');
+$wgSecretKey  = getenv('MW_SECRET_KEY');
 $wgUpgradeKey = getenv('MW_UPGRADE_KEY');
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = '1';
-
 
 # Don't use rel='nofollow' as it doesn't actually prevent spam
 $wgNoFollowLinks = false;
@@ -110,7 +109,7 @@ $wgNoFollowLinks = false;
 # Debugging {{{
 # Log everything to stdout to since we're using Docker
 $wgDebugLogFile = 'php://stdout';
-$wgDBerrorLog = 'php://stderr';
+$wgDBerrorLog   = 'php://stderr';
 
 # Show SQL errors to user instead of "(SQL query hidden)" message
 #$wgShowSQLErrors = true;
@@ -123,13 +122,13 @@ $wgDiff3 = '/usr/bin/diff3';
 # Extensions {{{
 # AbuseFilter
 wfLoadExtension('AbuseFilter');
-$wgGroupPermissions['sysop']['abusefilter-modify'] = true;
-$wgGroupPermissions['*']['abusefilter-log-detail'] = true;
-$wgGroupPermissions['*']['abusefilter-view'] = true;
-$wgGroupPermissions['*']['abusefilter-log'] = true;
-$wgGroupPermissions['sysop']['abusefilter-private'] = true;
+$wgGroupPermissions['sysop']['abusefilter-modify']            = true;
+$wgGroupPermissions['*']['abusefilter-log-detail']            = true;
+$wgGroupPermissions['*']['abusefilter-view']                  = true;
+$wgGroupPermissions['*']['abusefilter-log']                   = true;
+$wgGroupPermissions['sysop']['abusefilter-private']           = true;
 $wgGroupPermissions['sysop']['abusefilter-modify-restricted'] = true;
-$wgGroupPermissions['sysop']['abusefilter-revert'] = true;
+$wgGroupPermissions['sysop']['abusefilter-revert']            = true;
 $wgAbuseFilterEmergencyDisableThreshold = array('default' => 1.00);
 
 # AntiSpoof
@@ -142,18 +141,23 @@ wfLoadExtension('CategoryTree');
 # Cite
 wfLoadExtension('Cite');
 
+# Maps
+wfLoadExtension('Maps');
+require_once('extensions/Maps/Maps_Settings.php'); #TODO will change to DefaultSettings.php at next update
+$GLOBALS['egMapsDefaultService'] = 'leaflet';
+
 # TODO: OIDC (w/ dex)
 
 # ParserFunctions
 wfLoadExtension('ParserFunctions');
 $wgPFEnableStringFunctions = true;
 
-# Addition wiki-specific skins included in specific LocalSettings file
+# Additional wiki-specific skins included in specific LocalSettings file
 # }}}
 
 # Skins
-wfLoadSkin('Timeless');
-$wgDefaultSkin = 'timeless';
+wfLoadSkin('Vector');
+$wgDefaultSkin = 'vector';
 
 # Load wiki specific settings
-require_once("LocalSettings_$wgDBprefix.php");
+require_once("LocalSettings_{$wgDBprefix}.php");

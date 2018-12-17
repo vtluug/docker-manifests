@@ -1,6 +1,6 @@
 # VTLUUG's collection of docker-compose manifests
 
-In this repo, 'app' refers to a collection of containers. App directories are organized based on the host where the app is run, then directories for each app.
+In this repo, 'app' refers to a collection of containers. App directories are organized based on the host where the app is run, then directories for each app. All critical and nginx proxied services go through sczi, other than that it doesn't matter which host containers are on.
 
 We manage some images using docker hub. PM the sysadmin if you want to get added to our org there (or here on GH for that matter).
 

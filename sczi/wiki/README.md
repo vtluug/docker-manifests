@@ -23,7 +23,10 @@ Create `database.env` and `mediawiki.env` in the current directory with the foll
 ** `MW_UPGRADE_KEY`: see https://www.mediawiki.org/wiki/Manual:$wgUpgradeKey, found in vtluug-admin repo
 ** `SMTP_PASSWORD`: password for wiki-admin@vtluug, found in vtluug-admin repo
 
+After an initial run to create the db tables, uncomment the command line in docker-compse.yml
+
+
 
 ## Running it
 
-Run `docker-compose up -d`.
+Run it once in non-detached mode (`docker-composer up`) because sometimes `sleep` in the `COMMAND` directive doesn't work (TODO fix). Then, ^C that instance and restarted it in detached mode: `docker-compose up -d`.
