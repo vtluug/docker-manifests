@@ -146,6 +146,14 @@ wfLoadExtension('Maps');
 require_once('extensions/Maps/Maps_Settings.php'); #TODO will change to DefaultSettings.php at next update
 $GLOBALS['egMapsDefaultService'] = 'leaflet';
 
+# MobileFrontend & Nearby setup
+# Add data to articles as described in https://www.mediawiki.org/wiki/Extension:MobileFrontend#Setup_Nearby 
+wfLoadExtension('MobileFrontend');
+$wgMFAutodetectMobileView = true;
+$wgMFDefaultSkinClass     = 'SkinMinerva';
+wfLoadExtension('GeoData');
+$wgMFNearby = true
+
 # TODO: OIDC (w/ dex)
 
 # ParserFunctions

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  phenny:
+    restart: unless-stopped
+    image: mutantmonkey/phenny
+    volumes:
+      - /nfs/cistern/docker/data/phenny:/home/bot/.phenny
