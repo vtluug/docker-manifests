@@ -27,7 +27,7 @@ connectors:
   name: VTLUUG
   config:
     host: chimera.vtluug.org:636
-    rootCA: /etc/dex/tls/cfg/ldap_ca.crt
+    rootCA: /etc/dex/cfg/ldap_ca.crt
     userSearch:
       baseDN: dc=krb,dc=vtluug,dc=org
       filter: '(objectClass=posixAccount)'
