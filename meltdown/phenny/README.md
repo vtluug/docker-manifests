@@ -1,4 +1,4 @@
-# hokieprivacy
+# Phenny
 
 Base image: `https://hub.docker.com/r/mutantmonkey/phenny`
 
@@ -6,10 +6,11 @@ Base image: `https://hub.docker.com/r/mutantmonkey/phenny`
 
 ## Configuration
 
-Make sure you have access to the hokieprivacy repo on sczi.
+Create the directory `/nfs/cistern/docker/data/phenny/` with permissions 200:200. Phenny's configuration files are stored in this directory
 
-
-Create the directory `/nfs/cistern/docker/data/phenny/`. This is where all configuration files go.
+Create `phenny.env` in this directory and enter the following environmental variables:
+* `WADSWORTH_FREENODE`: Wadsworth's nick password for freenode, found in vtluug-admin repo
+* `WADSWORTH_OFTC`: Wadsworth's nick password for oftc, found in vtluug-admin repo
 
 
 

@@ -3,8 +3,7 @@ $wgSitename      = 'Linux and Unix Users Group at Virginia Teck Wiki';
 $wgMetaNamespace = 'VTLUUG';
 
 ## The protocol and server name to use in fully-qualified URLs
-#$wgServer = 'https://vtluug.org';
-$wgServer = 'http://vtluug.org';
+$wgServer = 'https://vtluug.org';
 
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!

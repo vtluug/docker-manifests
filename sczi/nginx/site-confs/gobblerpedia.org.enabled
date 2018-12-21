@@ -9,7 +9,18 @@ server {
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
-    server_name gobblerpedia.org www.gobblerpedia.org;
+    server_name www.gobblerpedia.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    return 301 https://gobblerpedia.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name gobblerpedia.org;
 
     # ssl conf
     include /config/nginx/ssl.conf;
@@ -18,10 +29,14 @@ server {
 
     # Wiki stuff {{{
     location / {
-        include /config/nginx/proxy.conf
+        return 301 https://gobblerpedia.org/wiki/Main_page;
+    }
+
+    location /w  {
+        include /config/nginx/proxy.conf;
         proxy_pass http://wiki_mediawiki_1:80;
     }
-   
+
     # Displayed path is /wiki, but actual path is /w
     # See $wgScriptPath & $wgArticle path in MW config
     location /wiki {
@@ -31,7 +46,7 @@ server {
    
     # Redirect & cache images
     location /w/images {
-        alias /wiki-images/vtluug;
+        alias /wiki-images/gobblerpedia;
         expires 30d;
     }
 

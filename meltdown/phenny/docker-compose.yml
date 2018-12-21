@@ -3,6 +3,10 @@ version: '3'
 services:
   phenny:
     restart: unless-stopped
-    image: mutantmonkey/phenny
+    env_file: phenny.env
+    image: vtluug/phenny
+    command: ['/bin/bash', '-c', '(/usr/src/app/phenny -c /home/bot/.phenny/Wadsworth-oftc.py) & (/usr/src/app/phenny -c /home/bot/.phenny/Wadsworth-freenode.py) & wait']
     volumes:
       - /nfs/cistern/docker/data/phenny:/home/bot/.phenny
+      - ./Wadsworth-oftc.py:/home/bot/.phenny/Wadsworth-oftc.py:ro
+      - ./Wadsworth-freenode.py:/home/bot/.phenny/Wadsworth-freenode.py:ro

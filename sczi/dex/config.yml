@@ -28,8 +28,10 @@ connectors:
   config:
     host: chimera.vtluug.org:636
     rootCA: /etc/dex/cfg/ldap_ca.crt
+    bindDN: uid=dex,cn=users,cn=accounts,dc=krb,dc=vtluug,dc=org
+    bindPW: dda497105bd37a333d963bdd9ef28a0d
     userSearch:
-      baseDN: dc=krb,dc=vtluug,dc=org
+      baseDN: cn=accounts,dc=krb,dc=vtluug,dc=org
       filter: '(objectClass=posixAccount)'
       username: uid
       idAttr: DN
@@ -45,3 +47,10 @@ connectors:
 oauth2:
   skipApprovalScreen: true
 enablePasswordDB: false
+
+staticClients:
+- id: vtluug-wiki
+  secret: TODO
+  name: 'VTLUUG Wiki'
+  redirectURIs:
+  - 'https://vtluug.org/w/index.php/Special:PluggableAuthLogin'

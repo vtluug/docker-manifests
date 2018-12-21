@@ -5,11 +5,21 @@ server {
 
     return 301 https://linx.li$request_uri;
 }
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.linx.li;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    return 301 https://linx.li$request_uri;
+}
 
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
-    server_name linx.li www.linx.li;
+    server_name linx.li;
 
     # ssl conf
     include /config/nginx/ssl.conf;
@@ -18,7 +28,7 @@ server {
 
     location / {
         # Proxy to linx container
-        fastcgi_pass linx_linx_1:8080;
         include /etc/nginx/fastcgi_params;
+        fastcgi_pass linx_linx_1:8080;
     }
 }

@@ -28,6 +28,19 @@ if ($_SERVER['SERVER_NAME'] == 'gobblerpedia.org') {
 }
 # }}}
 
+# Disable random account creation
+# FYI: sysop group = Administrators
+## Member can be:
+## - wiki-admin: both wikis, created at wiki creation but also in LDAP for mail, bureaucrat, creds found in vtluug-admin repo
+## - ODIC via dex: both wikis, admins = LDAP officers group + manually selected for non-LDAP sources
+## - Spam User: For merging & deleting spam accounts
+## - Abuse Filter: For AbuseFilter plugin
+## - Maintenance script: Default user for actions made via maintenance scripts
+$wgGroupPermissions['*']['edit']              = false;
+$wgGroupPermissions['*']['createaccount']     = false;
+$wgGroupPermissions['*']['autocreateaccount'] = true;
+
+
 # Mail {{{
 $wgSMTP = array(
  'host'     => 'acidburn.vtluug.org',
@@ -76,7 +89,7 @@ $wgFileExtensions[]          = 'svg';
 $wgSVGConverter              = 'rsvg';
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
-#$wgUseInstantCommons = true;
+$wgUseInstantCommons = true;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
 # about this MediaWiki instance. The Wikimedia Foundation shares this data
@@ -105,21 +118,12 @@ $wgAuthenticationTokenVersion = '1';
 
 # Don't use rel='nofollow' as it doesn't actually prevent spam
 $wgNoFollowLinks = false;
-
-# Debugging {{{
-# Log everything to stdout to since we're using Docker
-$wgDebugLogFile = 'php://stdout';
-$wgDBerrorLog   = 'php://stderr';
-
-# Show SQL errors to user instead of "(SQL query hidden)" message
-#$wgShowSQLErrors = true;
-#$wgDebugDumpSql = true;
 # }}}
 
 # Path to the GNU diff3 utility. Used for conflict resolution.
 $wgDiff3 = '/usr/bin/diff3';
 
-# Extensions {{{
+# Extensions (A-Zish order) {{{
 # AbuseFilter
 wfLoadExtension('AbuseFilter');
 $wgGroupPermissions['sysop']['abusefilter-modify']            = true;
@@ -141,26 +145,69 @@ wfLoadExtension('CategoryTree');
 # Cite
 wfLoadExtension('Cite');
 
+# Interwiki
+## Visit Special:Interwiki to configure
+wfLoadExtension('Interwiki');
+$wgGroupPermissions['sysop']['interwiki'] = true;
+
 # Maps
 wfLoadExtension('Maps');
 require_once('extensions/Maps/Maps_Settings.php'); #TODO will change to DefaultSettings.php at next update
 $GLOBALS['egMapsDefaultService'] = 'leaflet';
 
-# MobileFrontend & Nearby setup
-# Add data to articles as described in https://www.mediawiki.org/wiki/Extension:MobileFrontend#Setup_Nearby 
+# Mobile view & Nearby config
+# Add lat/lon to articles as described in https://www.mediawiki.org/wiki/Extension:MobileFrontend#Setup_Nearby
 wfLoadExtension('MobileFrontend');
 $wgMFAutodetectMobileView = true;
-$wgMFDefaultSkinClass     = 'SkinMinerva';
-wfLoadExtension('GeoData');
-$wgMFNearby = true
+wfLoadSkin('MinervaNeue');
+$wgMFDefaultSkinClass = 'SkinMinerva';
+# TODO '#coordinates' parser function is overridden by Maps extension
+#wfLoadExtension('GeoData');
+#$wgMFNearby = true;
 
-# TODO: OIDC (w/ dex)
+# Nuke
+## Default: sysop has perms
+wfLoadExtension('Nuke');
+
+# OpenID Connect
+wfLoadExtension('PluggableAuth');
+wfLoadExtension('OpenIDConnect');
+$wgPluggableAuth_EnableLocalLogin   = true;
+$wgPluggableAuth_ButtonLabelMessage = 'VTLUUG SSO';
+# LDAP => both wikis
+#TODO dex doesn't support userinfo_endpoint ODIC endpoint
+#$wgOpenIDConnect_Config['https://id.vtluug.org'] = [
+#    'clientID'     => 'vtluug-wiki',
+#    'clientsecret' => 'paulwalko', #getenv('DEX_WIKI_SECRET'),
+#    'name'         => 'VTLUUG SSO',
+#    'scope'        => ['openid', 'profile', 'email']
+#];
+# Google Login
+# Use email as username ONLY if no preferred username was provided
+$wgOpenIDConnect_UseEmailNameAsUserName = true;
+$wgOpenIDConnect_Config['https://accounts.google.com'] = [
+	'clientID'     => getenv('ODIC_GOOGLE_ID'),
+	'clientsecret' => getenv('ODIC_GOOGLE_SECRET'),
+	'scope'        => ['openid', 'profile', 'email']
+];
 
 # ParserFunctions
 wfLoadExtension('ParserFunctions');
 $wgPFEnableStringFunctions = true;
 
-# Additional wiki-specific skins included in specific LocalSettings file
+# Renameuser
+## Default: bureaucrat has perms
+wfLoadExtension('Renameuser');
+
+# Rollback
+$wgGroupPermissions['sysop']['rollback'] = true;
+
+# UserMerge
+## Default: nobody has perms
+wfLoadExtension('UserMerge');
+$wgGroupPermissions['sysop']['usermerge'] = true;
+
+# Additional wiki-specific extensions included in specific LocalSettings file
 # }}}
 
 # Skins
@@ -169,3 +216,16 @@ $wgDefaultSkin = 'vector';
 
 # Load wiki specific settings
 require_once("LocalSettings_{$wgDBprefix}.php");
+
+# Debugging {{{
+# Log everything to stdout to since we're using Docker
+$wgDebugLogFile = 'php://stdout';
+$wgDBerrorLog   = 'php://stderr';
+
+# SQL
+#$wgShowSQLErrors = true;
+#$wgDebugDumpSql = true;
+
+# Detailed debugging
+#$wgShowExceptionDetails = true;
+# }}}

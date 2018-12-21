@@ -3,13 +3,24 @@ server {
     listen [::]:80;
     server_name vtluug.org www.vtluug.org;
 
-    return 301 https://$host$request_uri;
+    return 301 https://vtluug.org$request_uri;
 }
 
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
-    server_name vtluug.org www.vtluug.org;
+    server_name www.vtluug.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    return 301 https://vtluug.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name vtluug.org;
 
     # ssl conf
     include /config/nginx/ssl.conf;
@@ -55,7 +66,7 @@ server {
     # LUUG wiki stuff (slightly different vs gobblerpedia) {{{
     # Proxy to internal instance
     location /w {
-        include /config/nginx/proxy.conf
+        include /config/nginx/proxy.conf;
         proxy_pass http://wiki_mediawiki_1:80;
     }
 

@@ -10,13 +10,13 @@ Our reverse-proxy https server.
 
 Create the folder `/nfs/cistern/docker/data/nginx/config` for persistent data.
 
+The TLS certs are stored in the container itself because 1) usually containers last long enough to maintain enough state for this to not be an issue and 2) the container doesn't play nice when `/etc/letsencrypt` can't be removed.
 
-The `default` file in this folder is the main nginx configuration and is required for running.
-
-Specific site files are in the `sites` folder in this folder and are enabled by appending `.enabled` to a configuration file, for example `gobblerpedia.org.enabled`. These files are included from `default`.
+Specific site files are in `site-confs` and are enabled by appending `.enabled` to a configuration file, for example `gobblerpedia.org.enabled`. These files are included from `nginx.conf`.
 
 
 This image includes support for fail2ban with a few jails. See the base image link for how to add more.
+
 
 
 ## Running it
