@@ -1,10 +1,13 @@
-version: '3'
+version: '2.3'
+# Version 3 doesn't support 'storage_opt' option... inb4 k8s
 
 services:
   phenny:
     restart: unless-stopped
     env_file: phenny.env
     image: vtluug/phenny
+    storage_opt:
+      size: 5G
     command: ['/bin/bash', '-c', '(/usr/src/app/phenny -c /home/bot/.phenny/Wadsworth-oftc.py) & (/usr/src/app/phenny -c /home/bot/.phenny/Wadsworth-freenode.py) & wait']
     volumes:
       - /nfs/cistern/docker/data/phenny:/home/bot/.phenny
