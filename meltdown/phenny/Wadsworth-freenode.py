@@ -5,7 +5,7 @@ host = 'chat.freenode.net'
 port = 6697
 ssl = True
 ipv6 = False
-channels = ['#pewpew'] #'#ipv6','#vtara', '#vtcsec', '#sys51']
+channels = ['#ipv6','#vtara', '#vtcsec', '#sys51']
 owner = 'pew'
 helpurl = "https://vtluug.org/wiki/Wadsworth"
 

@@ -5,7 +5,7 @@ host = 'irc.oftc.net'
 port = 6697
 ssl = True
 ipv6 = False
-channels = ['#pew']#['#vtcsec', '#vtluug', '#vtluug-infra', '#vtwug', '#pew', '#gobblerpedia', '#wuvt-nsfw', '#phenny-issues']
+channels = ['#vtcsec', '#vtluug', '#vtluug-infra', '#vtwug', '#pew', '#gobblerpedia', '#wuvt-nsfw', '#phenny-issues']
 owner ='pew'
 helpurl = "https://vtluug.org/wiki/Wadsworth"
 
