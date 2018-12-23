@@ -3,6 +3,7 @@ version: '3'
 services:
   pyqdb:
     restart: unless-stopped
+    env_file: pyqdb.env
     image: vtluug/pyqdb
     volumes:
       - /nfs/cistern/docker/data/pyqdb/quotes.db:/app/quotes.db
