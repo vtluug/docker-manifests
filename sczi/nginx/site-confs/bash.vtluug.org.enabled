@@ -19,6 +19,6 @@ server {
     location / {
         # Proxy to pyqdb container
         include /config/nginx/proxy.conf;
-        proxy_pass http://pyqdb_pyqdb_1:5556;
+        proxy_pass http://pyqdb_pyqdb_1:8080;
     }
 }
