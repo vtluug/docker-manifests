@@ -1,0 +1,24 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name bash.vtluug.org;
+
+    return 301 https://bash.vtluug.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name bash.vtluug.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 100M;
+
+    location / {
+        # Proxy to pyqdb container
+        include /config/nginx/proxy.conf;
+        proxy_pass http://pyqdb_pyqdb_1:5556;
+    }
+}
