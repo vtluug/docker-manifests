@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  linx:
+    restart: unless-stopped
+    image: vtluug/pyqdb
+    volumes:
+      - /nfs/cistern/docker/data/pyqdb/quotes.db:/app/quotes.db
+
+networks:
+  default:
+    external:
+      name: vtluug-network

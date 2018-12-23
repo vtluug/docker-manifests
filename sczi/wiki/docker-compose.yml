@@ -6,7 +6,7 @@ services:
     depends_on:
       - database
     env_file: mediawiki.env
-    image: pew9000/mediawiki-docker
+    image: vtluug/mediawiki
     # Wait for db to be ready (yes, we *should* do this better but sleep works)
     command: ['/bin/sh', '-c', 'sleep 7 && php /var/www/html/w/maintenance/update.php --quick ; apache2-foreground']
     networks:
