@@ -17,15 +17,24 @@ services:
       VALIDATION: html # TODO Switch to dns + gandi api once pr is merged
       TZ: America/New_York
     volumes:
+      # nginx config
       - /nfs/cistern/docker/data/nginx/config:/config
       - ./nginx.conf:/config/nginx/nginx.conf:ro
       - ./ssl.conf:/config/nginx/ssl.conf:ro
       - ./site-confs:/config/nginx/site-confs:ro
       - ./jail.local:/config/jail2ban/jail.local:ro
-      - /nfs/cistern/docker/data/wiki/images:/wiki-images:ro
-      - /nfs/cistern/docker/data/hokieprivacy:/hokieprivacy:ro
+      # general static stuff
       - /nfs/cistern/files:/files:ro
       - /nfs/cistern/home:/users:ro
+      # hokieprivacy static site
+      - /nfs/cistern/docker/data/hokieprivacy:/hokieprivacy:ro
+      # wiki images
+      - /nfs/cistern/docker/data/wiki/images:/wiki-images:ro
+      # funkwhale stuff. This is different than guide bc we're special
+      - /nfs/cistern/docker/data/funkwhale/frontend:/funkwhale/frontend:ro
+      - /nfs/cistern/docker/data/funkwhale/media_root:/funkwhale/media_root:ro
+      - /nfs/cistern/docker/data/funkwhale/static_root:/funkwhale/static_root:ro
+      - /nfs/cistern/share/media/music:/funkwhale/music-inplace:ro
     ports:
       - 128.173.88.78:80:80
       - 128.173.88.78:443:443

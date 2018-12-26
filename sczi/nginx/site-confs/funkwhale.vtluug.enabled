@@ -1,0 +1,75 @@
+# This file is based on https://dev.funkwhale.audio/funkwhale/funkwhale/raw/master/deploy/docker.nginx.template but modified somewhat
+
+# Websocket support
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name funkwhale.vtluug.org;
+
+    return 301 https://funkwhale.vtluug.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name funkwhale.vtluug.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    root /funkwhale/frontend;
+
+    location / {
+        try_files $uri $uri/ @rewrites;
+    }
+
+    location @rewrites {
+        rewrite ^(.+)$ /index.html last;
+    }
+
+    location /api/ {
+        # Max file upload size
+        client_max_body_size 300M;
+        # Proxy to funkwhale api
+        include /config/nginx/proxy.conf;
+        proxy_pass http://funkwhale_funkwhale_1:5000/api/;
+    }
+
+    location /federation/ {
+        include /config/nginx/proxy.conf;
+        proxy_pass http://funkwhale_funkwhale_1:5000/federation/;
+    }
+
+    location /rest/ {
+        include /config/nginx/proxy.conf;
+        proxy_pass http://funkwhale_funkwhale_1:5000/api/subsonic/rest/;
+    }
+
+    location /.well-known/ {
+        include /config/nginx/proxy.conf;
+        proxy_pass http://funkwhale_funkwhale_1:5000/.well-known/;
+    }
+
+    location /media/ {
+        alias /funkwhale/media_root/;
+    }
+
+    location /_protected/media {
+        internal;
+        alias /funkwhale/media_root;
+    }
+
+    location /_protected/music {
+        internal;
+        alias /funkwhale/music-inplace;
+    }
+
+    location /staticfiles/ {
+        alias /funkwhale/static_root/;
+    }
+}
