@@ -3,11 +3,11 @@
 Guide: https://docs.funkwhale.audio/installation/docker.html
 
 
+
 ## Configuration
 
-Follow the guide linked above, except our nginx config is done in the nginx app
-
-
+Follow the guide linked above, except our nginx config is done in the nginx app.
+The `.env` file is a bit tricky, but basically just set the values manually for nginx, also this file is not in GH so you need to create it on the host server.
 
 ### Importing music
 
