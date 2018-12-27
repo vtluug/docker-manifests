@@ -9,6 +9,8 @@ Base image: https://quay.io/repository/dexidp/dex
 
 Create the directory `/nfs/cistern/docker/data/dex`.
 
+Fill in 'bindPW' with dex's password (found in vtluug-admin repo)
+
 
 ## Running it
 
