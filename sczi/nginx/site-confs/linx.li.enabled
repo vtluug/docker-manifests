@@ -31,4 +31,8 @@ server {
         include /etc/nginx/fastcgi_params;
         fastcgi_pass linx_linx_1:8080;
     }
+
+    location /selif {
+        rewrite ^/selif/(.*)$ /s/$1 permanent;
+    }
 }

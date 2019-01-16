@@ -30,17 +30,17 @@ The `nginx` container exposes ports 80 and 443 and acts as a reverse-proxy for a
 
 For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 * 9000: gitolite
-* archivewarrior: 9001
-    * Only accessible via localhost on sczi
+* archivewarrior: ???
+    * Only accessible via localhost on meltdown
 
 #### Internal container ports
 
 Containers proxied through nginx:
 * vtluug-site: 1313¹ 
 * wiki: 80
-* dex: ??? TODO
+* dex: 5556
 * linx: 8080
-* funkwhale: ???
+* funkwhale: 5000
 
 We also run some static servies directly served through nginx (hokieprivacy, /files, etc)
 
@@ -49,4 +49,4 @@ We also run some static servies directly served through nginx (hokieprivacy, /fi
 
 
 ### Apps to be implemented after main apps (in order of priority)
-wadsworth, tor, gopher, funkwhale, bash, minecraft, jitsi, map, syncthing-relay, caddy (for QUIC), some monitoring things (elk, prometheous, portainer, watchtower, ???)
+gopher, minecraft, jitsi, map, syncthing-relay, QUIC, some monitoring things (elk, prometheous, portainer, ???)

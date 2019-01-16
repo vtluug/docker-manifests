@@ -34,25 +34,25 @@ server {
 
     location /api/ {
         # Max file upload size
-        client_max_body_size 300M;
+#        client_max_body_size 300M;
         # Proxy to funkwhale api
         include /config/nginx/proxy.conf;
-        proxy_pass http://funkwhale_funkwhale_1:5000/api/;
+        proxy_pass http://funkwhale_api_1:5000/api/;
     }
 
     location /federation/ {
         include /config/nginx/proxy.conf;
-        proxy_pass http://funkwhale_funkwhale_1:5000/federation/;
+        proxy_pass http://funkwhale_api_1:5000/federation/;
     }
 
     location /rest/ {
         include /config/nginx/proxy.conf;
-        proxy_pass http://funkwhale_funkwhale_1:5000/api/subsonic/rest/;
+        proxy_pass http://funkwhale_api_1:5000/api/subsonic/rest/;
     }
 
     location /.well-known/ {
         include /config/nginx/proxy.conf;
-        proxy_pass http://funkwhale_funkwhale_1:5000/.well-known/;
+        proxy_pass http://funkwhale_api_1:5000/.well-known/;
     }
 
     location /media/ {
