@@ -152,7 +152,8 @@ $wgGroupPermissions['sysop']['interwiki'] = true;
 
 # Maps
 wfLoadExtension('Maps');
-require_once('extensions/Maps/Maps_Settings.php'); #TODO will change to DefaultSettings.php at next update
+require_once('extensions/Maps/Maps_Settings.php');
+$egMapsEnableCoordinateFunction = false;
 $GLOBALS['egMapsDefaultService'] = 'leaflet';
 
 # Mobile view & Nearby config
