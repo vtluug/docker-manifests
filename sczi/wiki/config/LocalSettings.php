@@ -162,9 +162,8 @@ wfLoadExtension('MobileFrontend');
 $wgMFAutodetectMobileView = true;
 wfLoadSkin('MinervaNeue');
 $wgMFDefaultSkinClass = 'SkinMinerva';
-# TODO '#coordinates' parser function is overridden by Maps extension
-#wfLoadExtension('GeoData');
-#$wgMFNearby = true;
+wfLoadExtension('GeoData');
+$wgMFNearby = true;
 
 # Nuke
 ## Default: sysop has perms
