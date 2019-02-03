@@ -153,7 +153,7 @@ $wgGroupPermissions['sysop']['interwiki'] = true;
 # Maps
 wfLoadExtension('Maps');
 require_once('extensions/Maps/Maps_Settings.php');
-$egMapsEnableCoordinateFunction = false;
+$GLOBALS['egMapsEnableCoordinateFunction'] = false;
 $GLOBALS['egMapsDefaultService'] = 'leaflet';
 
 # Mobile view & Nearby config
