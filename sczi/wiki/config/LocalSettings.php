@@ -219,7 +219,7 @@ require_once("LocalSettings_{$wgDBprefix}.php");
 
 # Debugging {{{
 # Log everything to stdout to since we're using Docker
-$wgDebugLogFile = 'php://stdout';
+#$wgDebugLogFile = 'php://stdout';
 $wgDBerrorLog   = 'php://stderr';
 
 # SQL
