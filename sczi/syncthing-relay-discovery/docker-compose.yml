@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  syncthing-relay-discovery:
+    restart: unless-stopped
+    image: t4skforce/syncthing-relay-discovery
+    environment:
+      - PROVIDED_BY=vtluug
+    ports:
+      # relay
+      - 128.173.88.78:22067:22067
+      - 2607:b400:6:cc80:0:aff:fe62:b:22067:22067
+      # discovery
+      - 128.173.88.78:22026:22026
+      - 2607:b400:6:cc80:0:aff:fe62:b:22026:22026
+      # status
+      - 128.173.88.78:22070:22070
+      - 2607:b400:6:cc80:0:aff:fe62:b:22070:22070
