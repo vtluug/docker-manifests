@@ -6,6 +6,9 @@ services:
     image: t4skforce/syncthing-relay-discovery
     environment:
       - PROVIDED_BY=vtluug
+      - POOLS=https://relays.syncthing.net/endpoint
+      - RATE_GLOBAL=0
+      - RATE_SESSION=0
     ports:
       # relay
       - 128.173.88.78:22067:22067
