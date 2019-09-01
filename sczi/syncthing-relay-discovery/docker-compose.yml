@@ -3,12 +3,9 @@ version: '3'
 services:
   syncthing-relay-discovery:
     restart: unless-stopped
-    image: t4skforce/syncthing-relay-discovery
+    image: t4skforce/syncthing-relay-discovery:latest
     environment:
-      - PROVIDED_BY=vtluug
-      - POOLS=https://relays.syncthing.net/endpoint
-      - RATE_GLOBAL=0
-      - RATE_SESSION=0
+      RELAY_OPTS: '-global-rate=0 -per-session-rate=0 -pools=https://relays.syncthing.net/endpoint -provided-by=vtluug -status-srv=:22070'
     ports:
       # relay
       - 128.173.88.78:22067:22067
