@@ -7,9 +7,9 @@ Base image: https://quay.io/repository/dexidp/dex
 
 ## Configuration
 
-Create the directory `/nfs/cistern/docker/data/dex`.
+Create the directory `/nfs/cistern/docker/data/dex` with permissions 1001:1001.
 
-Fill in 'bindPW' with dex's password (found in vtluug-admin repo)
+Create the file 'dex.env' with 'DEX_LDAP_PASSWORD' set to dex's password (found in vtluug-admin repo)
 
 
 ## Running it

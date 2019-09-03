@@ -174,21 +174,19 @@ wfLoadExtension('PluggableAuth');
 wfLoadExtension('OpenIDConnect');
 $wgPluggableAuth_EnableLocalLogin   = true;
 $wgPluggableAuth_ButtonLabelMessage = 'VTLUUG SSO';
-# LDAP => both wikis
-#TODO dex doesn't support userinfo_endpoint ODIC endpoint
-#$wgOpenIDConnect_Config['https://id.vtluug.org'] = [
-#    'clientID'     => 'vtluug-wiki',
-#    'clientsecret' => 'paulwalko', #getenv('DEX_WIKI_SECRET'),
-#    'name'         => 'VTLUUG SSO',
-#    'scope'        => ['openid', 'profile', 'email']
-#];
-# Google Login
-# Use email as username ONLY if no preferred username was provided
-$wgOpenIDConnect_UseEmailNameAsUserName = true;
+# LDAP & Google => both wikis
+$wgOpenIDConnect_Config['https://id.vtluug.org'] = [
+    'clientID'		 => 'vtluug-wiki',
+    'clientsecret'	 => getenv('DEX_WIKI_SECRET'),
+    'name'		 => 'VTLUUG SSO',
+    'scope'		 => ['openid', 'profile', 'email'],
+    'preferred_username' => 'name'
+];
 $wgOpenIDConnect_Config['https://accounts.google.com'] = [
-	'clientID'     => getenv('ODIC_GOOGLE_ID'),
-	'clientsecret' => getenv('ODIC_GOOGLE_SECRET'),
-	'scope'        => ['openid', 'profile', 'email']
+    'clientID'     => getenv('ODIC_GOOGLE_ID'),
+    'clientsecret' => getenv('ODIC_GOOGLE_SECRET'),
+    'name'         => 'GOOGLE SSO',
+    'scope'        => ['openid', 'profile', 'email']
 ];
 
 # ParserFunctions
