@@ -7,7 +7,7 @@ services:
     # 'dex' cmd is already given as entrypoint
     command: ['serve', '/etc/dex/cfg/config.yml']
     volumes:
-        - /nfs/cistern/docker/data/dex:/var/dex
+        - /nfs/cistern/docker/data/dex:/var/dex:rw
         - ./config.yml:/etc/dex/cfg/config.yml:ro
         # Requires host to be an IPA client
         - /etc/ipa/ca.crt:/etc/dex/cfg/ldap_ca.crt:ro
