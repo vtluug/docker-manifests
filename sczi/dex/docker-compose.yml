@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     image: quay.io/dexidp/dex:latest
     # 'dex' cmd is already given as entrypoint
+    env_file: dex.env
     command: ['serve', '/etc/dex/cfg/config.yml']
     volumes:
         - /nfs/cistern/docker/data/dex:/var/dex:rw
