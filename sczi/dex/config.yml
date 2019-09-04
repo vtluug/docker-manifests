@@ -51,6 +51,7 @@ enablePasswordDB: false
 staticClients:
 - id: vtluug-wiki
   secret: TODO
-  name: 'VTLUUG Wiki'
+  name: 'VTLUUG Wikis'
   redirectURIs:
   - 'https://vtluug.org/w/index.php/Special:PluggableAuthLogin'
+  - 'https://gobblerpedia.org/w/index.php/Special:PluggableAuthLogin'
