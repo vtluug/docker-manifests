@@ -20,8 +20,11 @@ $wgDBTableOptions = "ENGINE=InnoDB, DEFAULT CHARSET=binary";
 # }}}
 
 # Wiki-specific settings {{{
-# Wiki specific files are loaded at end of file
-if ($_SERVER['SERVER_NAME'] == 'gobblerpedia.org') {
+## Wiki specific files are loaded at end of file
+## MW_DB constant is passed in by maintenance scripts
+if (defined('MW_DB')) {
+    $wgDBprefix = MW_DB;
+} elseif ($_SERVER['SERVER_NAME'] == 'gobblerpedia.org') {
     $wgDBprefix = 'gobblerpedia';
 } else {
     $wgDBprefix = 'vtluug';
@@ -174,19 +177,14 @@ wfLoadExtension('PluggableAuth');
 wfLoadExtension('OpenIDConnect');
 $wgPluggableAuth_EnableLocalLogin   = true;
 $wgPluggableAuth_ButtonLabelMessage = 'VTLUUG SSO';
-# LDAP & Google => both wikis
+$wgOpenIDConnect_UseEmailNameAsUserName = true;
+# LDAP => both wikis
 $wgOpenIDConnect_Config['https://id.vtluug.org'] = [
     'clientID'		 => 'vtluug-wiki',
     'clientsecret'	 => getenv('DEX_WIKI_SECRET'),
     'name'		 => 'VTLUUG SSO',
     'scope'		 => ['openid', 'profile', 'email'],
     'preferred_username' => 'name'
-];
-$wgOpenIDConnect_Config['https://accounts.google.com'] = [
-    'clientID'     => getenv('ODIC_GOOGLE_ID'),
-    'clientsecret' => getenv('ODIC_GOOGLE_SECRET'),
-    'name'         => 'GOOGLE SSO',
-    'scope'        => ['openid', 'profile', 'email']
 ];
 
 # ParserFunctions
