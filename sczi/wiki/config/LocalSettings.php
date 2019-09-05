@@ -50,7 +50,7 @@ $wgSMTP = array(
  'IDHost'   => 'vtluug.org',
  'port'     => 25,
  'auth'     => true,
- 'username' => 'wiki-admin',
+ 'username' => 'wiki-email',
  'password' => getenv('SMTP_PASSWORD')
 );
 
