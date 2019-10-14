@@ -25,8 +25,6 @@ Create `database.env` and `mediawiki.env` in the current directory with the foll
   * `ODIC_GOOGLE_ID`: ODIC id for authing with google accounts
   * `ODIC_GOOGLE_SECRET`: ODIC client secret for authing with google account
 
-After an initial run to create the db tables, uncomment the command line in docker-compse.yml
-
 See `config/LocalSettings*.php` for information about extensions such as interwiki, maps, etc.
 
 ## Running it
