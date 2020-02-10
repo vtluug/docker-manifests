@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name distributions.pconte.me;
+
+    client_max_body_size 100M;
+
+    location / {
+        # Proxy to container
+        include /config/nginx/proxy.conf;
+        proxy_pass http://class_util_web_1:8000;
+    }
+}
