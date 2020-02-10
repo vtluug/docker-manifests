@@ -3,11 +3,33 @@ server {
     listen [::]:80;
     server_name distributions.pconte.me;
 
+    return 301 https://distributions.pconte.me$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name distributions.pconte.me;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    return 301 https://distributions.pconte.me$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name distributions.pconte.me;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
     client_max_body_size 100M;
 
     location / {
         # Proxy to container
-        include /config/nginx/proxy.conf;
+        include /etc/nginx/proxy.conf;
         proxy_pass http://class_util_web_1:8000;
     }
 }
