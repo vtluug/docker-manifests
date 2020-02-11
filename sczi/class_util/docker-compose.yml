@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     image: philipconte/class_util
     volumes:
-      - ./data:/data
+      - /nfs/cistern/docker/data/class_util:/data
     env_file: .env
     environment:
       - DATABASE_URL=postgres://postgres@db/class_util_db
@@ -16,3 +16,9 @@ services:
     image: postgres
     environment:
       - POSTGRES_DB=class_util_db
+
+networks:
+  default:
+    external:
+      name: vtluug-network
+
