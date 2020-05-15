@@ -24,7 +24,7 @@ server {
     # ssl conf
     include /config/nginx/ssl.conf;
 
-    client_max_body_size 100M;
+    client_max_body_size 100K;
 
     location / {
         # Proxy to linx container
