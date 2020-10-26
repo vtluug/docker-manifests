@@ -1,4 +1,4 @@
-# linx
+# pyqdb
 
 Out instance of pyqdb for bash.vtluug.org.
 
