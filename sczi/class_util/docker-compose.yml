@@ -7,13 +7,12 @@ services:
     volumes:
       - /nfs/cistern/docker/data/class_util:/data
     env_file: .env
-    environment:
-      - DATABASE_URL=postgres://postgres@db/class_util_db
     depends_on:
       - db
 
   db:
     image: postgres
+    env_file: .env
     environment:
       - POSTGRES_DB=class_util_db
 

@@ -202,6 +202,7 @@ $wgGroupPermissions['sysop']['rollback'] = true;
 ## Default: nobody has perms
 wfLoadExtension('UserMerge');
 $wgGroupPermissions['sysop']['usermerge'] = true;
+$wgUserMergeProtectedGroups = array();
 
 # Additional wiki-specific extensions included in specific LocalSettings file
 # }}}

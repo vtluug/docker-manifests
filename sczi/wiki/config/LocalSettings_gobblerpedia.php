@@ -19,6 +19,9 @@ $wgOpenIDConnect_Config['https://accounts.google.com'] = [
     'scope'        => ['openid', 'profile', 'email']
 ];
 
+wfLoadExtension('Scribunto');
+$wgScribuntoDefaultEngine = 'luastandalone';
+
 ## For attaching licensing metadata to pages, and displaying an
 ## appropriate copyright notice / icon. GNU Free Documentation
 ## License and Creative Commons licenses are supported so far.

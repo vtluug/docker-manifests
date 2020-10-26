@@ -1,0 +1,42 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name linx.vtluug.org;
+
+    return 301 https://linx.vtluug.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name linx.vtluug.org;
+
+    # https://vt4help.service-now.com/sp?id=kb_article&sys_id=16eadd6f0fe6a640ee5a0bcce1050e77
+    allow 128.173.0.0/16;
+    allow 198.82.0.0/16;
+    allow 172.16.0.0/12;
+    allow 2607:b400:20::/44;
+    allow 2001:468:c80::/48;
+    allow 2607:b400::/40;
+    allow 2002:80ad::/32;
+    allow 2002:c652::/32;
+    allow 192.70.138.0/24;
+    allow 192.70.187.0/24;
+    deny all;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 100K;
+
+    location / {
+        # Proxy to linx container
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass linx_linx_1:8080;
+    }
+
+    location /selif {
+        rewrite ^/selif/(.*)$ /s/$1 permanent;
+    }
+}
+

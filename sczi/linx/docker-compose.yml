@@ -4,7 +4,7 @@ services:
   linx:
     restart: unless-stopped
     image: andreimarcu/linx-server
-    command: ['-sitename=linx', '-allowhotlink', '-fastcgi', '-remoteuploads', '-selifpath', 's', '-custompagespath', '/data/custom_pages', '-maxexpiry', '604800', '-cleanup-every-minutes', '5', '-nologs', 'true', '-maxsize', '100000']
+    command: ['-sitename=luugLinx', '-allowhotlink', '-fastcgi', '-remoteuploads', '-selifpath', 's', '-custompagespath', '/data/custom_pages', '-maxexpiry', '604800', '-cleanup-every-minutes', '5', '-nologs', 'true', '-maxsize', '100000']
     volumes:
       - /nfs/cistern/docker/data/linx/files:/data/files
       - /nfs/cistern/docker/data/linx/meta:/data/meta
