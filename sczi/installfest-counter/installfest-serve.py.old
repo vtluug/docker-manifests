@@ -1,0 +1,32 @@
+from flask import Flask
+from flask import json
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+distro_list = {}
+
+@app.route('/add/<distro>', methods=['POST', 'GET'])
+def add_distro(distro):
+    # add distro to distro_list
+    if distro in distro_list:
+        distro_list[distro] = distro_list[distro]+1;
+    else:
+        distro_list[distro] = 1;
+    return ''
+
+@app.route('/hello')
+def hello():
+    return '{"hello": ["Item 1", "Item 2"]}'
+
+@app.route('/distrolist')
+def getDistrolist():
+    distros = DistroList(distro_list);
+    return json.dumps(distros.__dict__);
+
+
+class DistroList:
+
+    def __init__(self, distdict):
+        self.distros = distdict

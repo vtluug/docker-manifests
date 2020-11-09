@@ -1,4 +1,4 @@
-# linx
+# class_util
 
 Base image: https://hub.docker.com/r/philipconte/class_util/
 

@@ -39,8 +39,6 @@ Containers proxied through nginx:
 * vtluug-site: 1313¹ 
 * wiki: 80
 * dex: 5556
-* linx: 8080
-* funkwhale: 5000
 
 We also run some static servies directly served through nginx (hokieprivacy, /files, etc)
 

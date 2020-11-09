@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+   installfest-counter-app:
+     image: installfest-counter:latest
+     ports: 
+       - "8086:8086"
+     volumes:
+       - /nfs/cistern/docker/data/installfest-counter/app:/app
+     restart: always

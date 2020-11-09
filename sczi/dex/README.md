@@ -1,5 +1,7 @@
-# linx
+# dex
 
+
+Used as an OIDC bridge between the wiki and FreeIPA (LDAP) accounts.
 
 Base image: https://quay.io/repository/dexidp/dex
 

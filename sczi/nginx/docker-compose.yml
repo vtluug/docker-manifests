@@ -12,8 +12,8 @@ services:
       EMAIL: sysadmin@vtluug.org
       # URL field must be working since nginx only starts if letsencrypt works
       URL: vtluug.org
-      SUBDOMAINS: www,bash,funkwhale,id,linx,sczi,wiki
-      EXTRA_DOMAINS: gobblerpedia.org,www.gobblerpedia.org,hokieprivacy.org,www.hokieprivacy.org,linx.li,www.linx.li,distributions.pconte.me
+      SUBDOMAINS: www,bash,id,sczi,wiki
+      EXTRA_DOMAINS: gobblerpedia.org,www.gobblerpedia.org,hokieprivacy.org,www.hokieprivacy.org,distributions.pconte.me
       VALIDATION: html # TODO Switch to dns + gandi api once pr is merged
       TZ: America/New_York
     volumes:
@@ -30,11 +30,6 @@ services:
       - /nfs/cistern/docker/data/hokieprivacy:/hokieprivacy:ro
       # wiki images
       - /nfs/cistern/docker/data/wiki/images:/wiki-images:ro
-      # funkwhale stuff. This is different than guide bc we're special
-      - /nfs/cistern/docker/data/funkwhale/frontend:/funkwhale/frontend:ro
-      - /nfs/cistern/docker/data/funkwhale/media_root:/funkwhale/media_root:ro
-      - /nfs/cistern/docker/data/funkwhale/static_root:/funkwhale/static_root:ro
-      - /nfs/cistern/share/media/music:/funkwhale/music-inplace:ro
     ports:
       - 128.173.88.78:80:80
       - 128.173.88.78:443:443
