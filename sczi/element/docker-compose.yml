@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  element:
+    image: vectorim/element-web:latest
+    restart: unless-stopped
+    volumes:
+      - ./element-config.json:/app/config.json
+    ports: 
+      - "7331:80"
+
+networks:
+  default:
+    external:
+      name: vtluug-network
