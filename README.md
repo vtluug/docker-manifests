@@ -32,6 +32,7 @@ For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 * 9000: gitolite
 * archivewarrior: ???
     * Only accessible via localhost on meltdown
+* 113: thelounge (IRC identd)
 
 #### Internal container ports
 
