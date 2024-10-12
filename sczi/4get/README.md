@@ -16,4 +16,5 @@ The environment variables FOURGET_xyz are reflected to the config.php value xyz.
 
 ## Running it
 
-Run `docker-compose up -d`.
+Run `docker-compose up -d`, then
+`./fix_opensearch.sh`. If you grok docker-compose a little better than I do, feel free to make it do that automagically.
