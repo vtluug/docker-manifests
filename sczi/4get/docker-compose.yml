@@ -14,7 +14,7 @@ services:
       - "7332:80"
       
     volumes:
-      - ./banners:/var/www/html/4get/banner
+      - /nfs/cistern/docker/apps/sczi/4get/banners:/var/www/html/4get/banner
 
 networks:
   default:
