@@ -6,4 +6,4 @@
 #  otherwise, it'll add the search engine as http://[host], which 
 #  inevitably resolves to http://search.vtluug.org:443, which obviously
 #  just doesn't work
-docker exec -it 4get_fourget_1 sed -i '2i\$SERVER[\"HTTPS\"] = \"on\";' opensearch.php
+docker exec -it 4get_fourget_1 sed -i '2i\$_SERVER[\"HTTPS\"] = \"on\";' opensearch.php
