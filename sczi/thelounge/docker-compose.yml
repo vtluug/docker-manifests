@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  fourget:
+    image: thelounge/thelounge:latest
+    restart: always
+
+    ports:
+      - 113:9001
+      - 9009:9000
+      
+    volumes:
+      - /nfs/cistern/docker/data/thelounge/:/var/opt/thelounge
+
+networks:
+  default:
+    external:
+      name: vtluug-network
