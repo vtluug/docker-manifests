@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  fourget:
+    image: luuul/4get:latest
+    restart: unless-stopped
+    environment:
+      - FOURGET_PROTO=http
+      - FOURGET_SERVER_NAME=search.vtluug.org
+      - FOURGET_SERVER_SHORT_DESCRIPTION="Virginia Tech Linux & Unix User's Group"
+      - FOURGET_SERVER_LONG_DESCRIPTION="Virginia Tech Linux & Unix User's Group"
+
+    ports:
+      - "7332:80"
+      
+    volumes:
+      - ./banners:/var/www/html/4get/banner
+
+networks:
+  default:
+    external:
+      name: vtluug-network
