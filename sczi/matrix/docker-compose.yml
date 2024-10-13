@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  fourget:
+    image: matrixdotorg/synapse:latest
+    restart: unless-stopped
+
+    ports:
+      - 7333:8008
+      
+    volumes:
+      - /nfs/cistern/docker/data/synapse:/data
+
+networks:
+  default:
+    external:
+      name: vtluug-network
