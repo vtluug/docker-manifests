@@ -5,7 +5,7 @@ services:
     image: vectorim/element-web:latest
     restart: unless-stopped
     volumes:
-      - ./element-config.json:/app/config.json
+      - /nfs/cistern/docker/apps/sczi/element/element-config.json:/app/config.json
     ports: 
       - "7331:80"
 
