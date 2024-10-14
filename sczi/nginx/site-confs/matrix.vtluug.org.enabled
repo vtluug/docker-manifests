@@ -18,6 +18,9 @@ server {
     listen 8448 ssl default_server;
     listen [::]:8448 ssl default_server;
 
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
     server_name matrix.vtluug.org;
 
     location ~ ^(/_matrix|/_synapse/client) {
