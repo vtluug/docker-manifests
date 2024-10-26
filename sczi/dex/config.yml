@@ -55,3 +55,9 @@ staticClients:
   redirectURIs:
   - 'https://vtluug.org/w/index.php/Special:PluggableAuthLogin'
   - 'https://gobblerpedia.org/w/index.php/Special:PluggableAuthLogin'
+staticClients:
+- id: gitea
+  redirectURIs:
+    - https://git.vtluug.org/user/oauth2/gitea/callback
+  name: "Gitea"
+  secret: 35j8dpv3n2kxanegvn43sqm36m928eiz
