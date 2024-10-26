@@ -36,7 +36,19 @@ server {
         # Increase client_max_body_size to match max_upload_size defined in homeserver.yaml
         client_max_body_size 50M;
     
-    # Synapse responses may be chunked, which is an HTTP/1.1 feature.
-    proxy_http_version 1.1;
+        # Synapse responses may be chunked, which is an HTTP/1.1 feature.
+        proxy_http_version 1.1;
+    }
+
+    location /.well-known/matrix/client {
+            return 200 '{"m.homeserver": {"base_url": "https://matrix.vtluug.org"}}';
+            default_type application/json;
+            add_header Access-Control-Allow-Origin *;
+    }
+
+    location /.well-known/matrix/server {
+            return 200 '{"m.server": "matrix.vtluug.org:443"}';
+            default_type application/json;
+            add_header Access-Control-Allow-Origin *;
     }
 }
