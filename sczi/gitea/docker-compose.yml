@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  gitea:
+    image: gitea/gitea:nightly
+    container_name: gitea
+    environment:
+      - USER_UID=0
+      - USER_GID=0
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - /nfs/cistern/docker/data/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "7334:3000"
+      - 128.173.88.78:9000:22
+      - 2607:b400:6:cc80:0:aff:fe62:b:9000:22
+
+networks:
+  gitea:
+    external: false
+  default:
+    external:
+      name: vtluug-network

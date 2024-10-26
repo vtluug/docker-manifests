@@ -29,7 +29,7 @@ We manage some images using docker hub. PM the sysadmin if you want to get added
 The `nginx` container exposes ports 80 and 443 and acts as a reverse-proxy for all other sites.
 
 For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
-* 9000: gitolite
+* 9000: gitea
 * archivewarrior: ???
     * Only accessible via localhost on meltdown
 * 113: thelounge (IRC identd)
