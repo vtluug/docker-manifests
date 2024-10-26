@@ -20,8 +20,6 @@ services:
       - 2607:b400:6:cc80:0:aff:fe62:b:9000:22
 
 networks:
-  gitea:
-    external: false
   default:
     external:
       name: vtluug-network
