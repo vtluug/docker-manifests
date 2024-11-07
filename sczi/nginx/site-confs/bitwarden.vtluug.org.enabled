@@ -1,14 +1,33 @@
+upstream vaultwarden-default {
+  zone vaultwarden-default 64k;
+  server acidburn.vtluug.org:7339;
+  keepalive 2;
+}
+
+# Needed to support websocket connections
+# See: https://nginx.org/en/docs/http/websocket.html
+# Instead of "close" as stated in the above link we send an empty value.
+# Else all keepalive connections will not work.
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      "";
+}
+
 server {
     listen 80;
     listen [::]:80;
     server_name bitwarden.vtluug.org;
 
-    return 301 https://bitwarden.vtluug.org$request_uri;
+    if ($host = bitwarden.vtluug.org) {
+        return 301 https://$host$request_uri;
+    }
+    return 404;
 }
 
 server {
     listen 443 ssl;
     listen [::]:443 ssl;
+    http2 on;
     server_name bitwarden.vtluug.org;
 
     # ssl conf
@@ -17,8 +36,15 @@ server {
     client_max_body_size 100M;
 
     location / {
-        # Proxy to container
-        include /config/nginx/proxy.conf;
-        proxy_pass http://acidburn.vtluug.org:7339;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        proxy_pass http://vaultwarden-default;
     }
 }
