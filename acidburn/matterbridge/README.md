@@ -7,4 +7,4 @@ copy `matterbridge.toml.sample` to `/nfs/cistern/docker/data/matterbridge/matter
 
 ## Deployment
 
-`docker-compose up -d`
+`docker compose up -d`

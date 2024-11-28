@@ -1,0 +1,12 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    env_file: /nfs/cistern/docker/data/gluetun/mullvad.env
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=mullvad
+      - VPN_TYPE=openvpn

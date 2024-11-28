@@ -20,6 +20,7 @@ We manage some images using docker hub. PM the sysadmin if you want to get added
 * `/nfs/cistern/docker/apps`: Location of all app configs. Aka this repo.
 * Some apps also reference other directories, for example funkwhale uses the NFS share for importing music. See the app-specific README for details
 * The `vtluug-network` docker network is used for nginx reverse proxying.
+* `/opt/docker` replaces `/nfs/cistern/docker` on acidburn
 
 
 ### Ports
