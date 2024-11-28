@@ -37,14 +37,10 @@ For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
 #### Internal container ports
 
 Containers proxied through nginx:
-* vtluug-site: 1313¹ 
 * wiki: 80
 * dex: 5556
 
 We also run some static servies directly served through nginx (hokieprivacy, /files, etc)
-
-
-¹May be converted to a static site instead.
 
 
 ### Apps to be implemented after main apps (in order of priority)
