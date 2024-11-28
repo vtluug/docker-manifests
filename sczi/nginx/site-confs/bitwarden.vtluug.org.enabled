@@ -1,6 +1,6 @@
 upstream vaultwarden-default {
   zone vaultwarden-default 64k;
-  server acidburn.vtluug.org:7339;
+  server vaultwarden:80;
   keepalive 2;
 }
 
