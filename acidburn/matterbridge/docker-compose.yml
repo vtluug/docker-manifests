@@ -4,4 +4,4 @@ services:
     image: 42wim/matterbridge:stable
     restart: unless-stopped
     volumes:
-    - /nfs/cistern/docker/data/matterbridge/matterbridge.toml:/etc/matterbridge/matterbridge.toml:ro
+    - /opt/docker/data/matterbridge/matterbridge.toml:/etc/matterbridge/matterbridge.toml:ro
