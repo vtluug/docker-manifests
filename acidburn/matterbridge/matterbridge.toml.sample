@@ -1,0 +1,25 @@
+# sample config. the only thing that should need changing is the Password= for the matrix user
+
+[irc.oftc]
+Server="irc.oftc.net:6667"
+Nick="luugb"
+RemoteNickFormat="[m] <{NICK}> "
+
+[matrix.luug]
+Server="https://matrix.vtluug.org"
+
+Login="oftc-bridge"
+Password="insert bridge password here"
+
+RemoteNickFormat="[irc] <{NICK}> "
+
+[[gateway]]
+name="gateway1"
+enable=true
+    [[gateway.inout]]
+    account="irc.oftc"
+    channel="#vtluug"
+
+    [[gateway.inout]]
+    account="matrix.luug"
+    channel="#vtluug-g:matrix.vtluug.org"

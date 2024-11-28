@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  matterbridge:
+    image: 42wim/matterbridge:stable
+    restart: unless-stopped
+    volumes:
+    - /nfs/cistern/docker/data/matterbridge/matterbridge.toml:/etc/matterbridge/matterbridge.toml:ro
