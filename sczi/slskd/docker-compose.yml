@@ -10,6 +10,8 @@ services:
       - 50300:50300/tcp #slsk, needs to route out for anything to work
     volumes:
       - /nfs/cistern/docker/data/slskd:/app:rw
+      - /nfs/cistern/docker/data/slskd/tmpfs:/.net/slskd:rw
+      - /nfs/cistern/docker/data/slskd/tmpfs:/tmp:rw
       - /nfs/cistern/docker/share/media/souleek:/media:rw
 
     user: 1000:1000
