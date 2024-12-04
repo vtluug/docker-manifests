@@ -14,8 +14,6 @@ server {
     # ssl conf
     include /config/nginx/ssl.conf;
 
-    client_max_body_size 100M;
-
     location / {
         proxy_pass http://slskd:5030;
         proxy_set_header Upgrade $http_upgrade;
