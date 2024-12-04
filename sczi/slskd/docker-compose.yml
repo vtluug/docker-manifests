@@ -14,3 +14,9 @@ services:
     user: 1000:1000
     image: slskd/slskd:latest
     container_name: slskd
+  
+
+networks:
+  default:
+    external:
+      name: vtluug-network
