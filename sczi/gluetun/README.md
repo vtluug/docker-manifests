@@ -6,7 +6,7 @@ gluetun instance for putting containers behind the luug's mullvad
 
 make sure `/nfs/cistern/docker/data/gluetun/mullvad.env` exists, with the contents
 
-`OPENVPN_USER: our-mullvad-id` (check https://git.vtluug.org/officers/vtluug-admin, `accounts.yml`)
+`OPENVPN_USER=our-mullvad-id` (check https://git.vtluug.org/officers/vtluug-admin, `accounts.yml`)
 
 # deployment
 
