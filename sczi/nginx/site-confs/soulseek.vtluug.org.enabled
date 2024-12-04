@@ -19,6 +19,6 @@ server {
     location / {
         # Proxy to container
         include /config/nginx/proxy.conf;
-        proxy_pass http://slsk:5030;
+        proxy_pass http://slskd:5030;
     }
 }
