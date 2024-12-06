@@ -12,8 +12,9 @@ services:
       - /nfs/cistern/docker/data/slskd:/app:rw
       - /nfs/cistern/docker/data/slskd/tmpfs:/.net/slskd:rw
       - /nfs/cistern/docker/data/slskd/tmpfs:/tmp:rw
-      - /nfs/cistern/docker/share/media/souleek:/media:rw
-
+      - /nfs/cistern/docker/share/media/soulseek/share:/media:rw
+      - /nfs/cistern/docker/share/media/soulseek/downloads:/app/downloads:rw
+      
     user: 1000:1000
     image: slskd/slskd:latest
     container_name: slskd
