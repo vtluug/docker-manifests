@@ -3,7 +3,9 @@ services:
   slskd:
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
-      - "SLSKD_SHARED_DIR=/media"
+      - SLSKD_SHARED_DIR=/media
+      - SLSKD_DOWNLOADS_DIR=/downloads
+      - SLSKD_INCOMPLETE_DIR=/incomplete
     ports:
       # - 5030:5030/tcp #http, reverse proxy internally
       # - 5031:5031/tcp #https
@@ -12,7 +14,9 @@ services:
       - /nfs/cistern/docker/data/slskd:/app:rw
       - /nfs/cistern/docker/data/slskd/tmpfs:/.net/slskd:rw
       - /nfs/cistern/docker/data/slskd/tmpfs:/tmp:rw
-      - /nfs/cistern/share/media/soulseek/share:/media:rw
+      - /nfs/cistern/share/media/music:/media:rw
+      - /nfs/cistern/share/media/music/soulseek/downloads:/downloads:rw
+      - /nfs/cistern/share/media/music/soulseek/incomplete:/incomplete:rw
       
     user: 1000:1000
     image: slskd/slskd:latest
