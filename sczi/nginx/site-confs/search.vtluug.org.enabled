@@ -25,6 +25,6 @@ server {
     location / {
         # Proxy to container
         include /config/nginx/proxy.conf;
-        proxy_pass http://4get_fourget_1:80;
+        proxy_pass http://fourget:80;
     }
 }

@@ -2,6 +2,7 @@ version: '3'
 
 services:
   fourget:
+    container_name: fourget
     image: luuul/4get:latest
     restart: unless-stopped
     environment:
