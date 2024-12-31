@@ -23,4 +23,4 @@ SLSKD_SECRET=aids
 
 ## Running it
 
-Run `docker-compose up -d`.
+Run `docker compose up -d`.

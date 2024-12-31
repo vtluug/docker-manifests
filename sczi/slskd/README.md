@@ -10,6 +10,7 @@ give 1000:1000 permissions for the /data mount.
 
 create an slskd-sso.env that looks something like
 ```
+OAUTH2_PROXY_HTTP_ADDRESS=0.0.0.0:4180
 OAUTH2_PROXY_PROVIDER=oidc
 OAUTH2_PROXY_OIDC_ISSUER_URL=https://id.vtluug.org
 OAUTH2_PROXY_CLIENT_ID=slskd-sso

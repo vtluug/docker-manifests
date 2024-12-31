@@ -19,6 +19,6 @@ server {
     location / {
         # Proxy to dex container
         include /config/nginx/proxy.conf;
-        proxy_pass http://dex_dex_1:5556;
+        proxy_pass http://dex:5556;
     }
 }

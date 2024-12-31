@@ -2,6 +2,7 @@ version: '3'
 
 services:
   dex:
+    container_name: dex
     restart: unless-stopped
     image: quay.io/dexidp/dex:latest
     # 'dex' cmd is already given as entrypoint
