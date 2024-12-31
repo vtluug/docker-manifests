@@ -18,6 +18,7 @@ add secrets for all registered static services, e.g.
 DEX_LDAP_PASSWORD=hunter2
 WIKI_SECRET=topsecret
 GITEA_SECRET=tercespot
+SLSKD_SECRET=aids
 ```
 
 ## Running it

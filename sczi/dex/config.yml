@@ -61,3 +61,8 @@ staticClients:
     - https://git.vtluug.org/user/oauth2/VTLUUG_SSO/callback
   name: "Gitea"
   secret: $GITEA_SECRET
+- id: slskd-sso
+  redirectURIs:
+    - https://soulseek.vtluug.org/oauth2/callback
+  name: "slskd-sso"
+  secret: $SLSKD_SECRET
