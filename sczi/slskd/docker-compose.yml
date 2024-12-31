@@ -21,7 +21,15 @@ services:
     user: 1000:1000
     image: slskd/slskd:latest
     container_name: slskd
-  
+  slskd-sso:
+    container_name: slskd-sso
+    image: quay.io/oauth2-proxy/oauth2-proxy:latest
+    hostname: slskd-sso
+    restart: unless-stopped
+    ports:
+      - 4180:4180
+    env_file:
+      - slskd-sso.env
 
 networks:
   default:

@@ -15,11 +15,22 @@ server {
     include /config/nginx/ssl.conf;
 
     location / {
+        auth_request /oauth2/auth;
+        error_page 401 = /oauth2/start;
+
         proxy_pass http://slskd:5030;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "Upgrade";
         proxy_set_header Host $host;
         proxy_request_buffering off;
+    }
+    
+    location /oauth2/ {
+        proxy_pass http://slskd-sso:4180;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
     }
 
    client_max_body_size 0;
