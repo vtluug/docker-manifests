@@ -10,7 +10,7 @@ services:
       - gluetun.env
     environment:
       - VPN_SERVICE_PROVIDER=mullvad
-      - VPN_TYPE=wireguard
+      - VPN_TYPE=openvpn
     ports:
       - 8080:8080 # qbit
     restart: unless-stopped
