@@ -11,8 +11,6 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=wireguard
-    networks:
-      - vtluug-network
     ports:
       - 8080:8080 # qbit
     restart: unless-stopped
@@ -33,5 +31,5 @@ services:
 
 networks:
   default:
-    external:
-      name: vtluug-network
+    external: true
+    name: vtluug-network
