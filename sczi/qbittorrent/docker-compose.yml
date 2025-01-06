@@ -2,6 +2,7 @@ version: "3"
 services:
   gluetun:
     image: qmcgaw/gluetun
+    container_name: qbittorrent-gtun
     cap_add:
       - NET_ADMIN
     devices:
@@ -11,8 +12,8 @@ services:
     environment:
       - VPN_SERVICE_PROVIDER=mullvad
       - VPN_TYPE=openvpn
-    ports:
-      - 8080:8080 # qbit
+    #ports:
+    #  - 8080:8080 # qbit
     restart: unless-stopped
   qbittorrent:
     image: linuxserver/qbittorrent:latest
