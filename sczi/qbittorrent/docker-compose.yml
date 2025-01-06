@@ -28,7 +28,15 @@ services:
       - /nfs/cistern/share/torrent-dl/:/downloads
     network_mode: "service:gluetun"
     restart: unless-stopped
-
+  qbittorrent-sso:
+    container_name: qbittorrent-sso
+    image: quay.io/oauth2-proxy/oauth2-proxy:latest
+    hostname: qbittorrent-sso
+    restart: unless-stopped
+    #ports:
+    #  - 4180:4180
+    env_file:
+      - qbittorrent-sso.env
 
 networks:
   default:

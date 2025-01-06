@@ -66,3 +66,8 @@ staticClients:
     - https://soulseek.vtluug.org/oauth2/callback
   name: "slskd-sso"
   secret: $SLSKD_SECRET
+- id: qbittorrent-sso
+  redirectURIs:
+    - https://seed.vtluug.org/oauth2/callback
+  name: "qbittorrent-sso"
+  secret: $QBIT_SECRET
