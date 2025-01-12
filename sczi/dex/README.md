@@ -19,6 +19,7 @@ DEX_LDAP_PASSWORD=hunter2
 WIKI_SECRET=topsecret
 GITEA_SECRET=tercespot
 SLSKD_SECRET=aids
+QBIT_SECRET=aids
 ```
 
 then run `python3 generate_config.py`. this is lazy, feel free to do something better :)

@@ -1,0 +1,44 @@
+version: "3"
+services:
+  gluetun:
+    image: qmcgaw/gluetun
+    container_name: qbittorrent-gtun
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    env_file:
+      - gluetun.env
+    environment:
+      - VPN_SERVICE_PROVIDER=mullvad
+      - VPN_TYPE=openvpn
+    #ports:
+    #  - 8080:8080 # qbit
+    restart: unless-stopped
+  qbittorrent:
+    image: linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - WEBUI_PORT=8080
+    volumes:
+      - /nfs/cistern/docker/data/qbittorrent:/config
+      - /nfs/cistern/share/torrent-dl/:/downloads
+    network_mode: "service:gluetun"
+    restart: unless-stopped
+  qbittorrent-sso:
+    container_name: qbittorrent-sso
+    image: quay.io/oauth2-proxy/oauth2-proxy:latest
+    hostname: qbittorrent-sso
+    restart: unless-stopped
+    #ports:
+    #  - 4180:4180
+    env_file:
+      - qbittorrent-sso.env
+
+networks:
+  default:
+    external: true
+    name: vtluug-network
