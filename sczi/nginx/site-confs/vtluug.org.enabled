@@ -29,7 +29,7 @@ server {
 
     # Main site
     location / {
-        proxy_pass https://vtluug.github.io;
+        proxy_pass http://vtluug-site;
     }
 
     # Static files (including user homedirs) {{{

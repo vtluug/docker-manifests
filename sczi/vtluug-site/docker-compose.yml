@@ -3,6 +3,3 @@ services:
     container_name: vtluug-site
     restart: unless-stopped
     build: .
-    ports:
-    - 80:80
-  
