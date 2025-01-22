@@ -1,19 +1,7 @@
 # vtluug-site
 
-Base image: https://hub.docker.com/r/monachus/hugo/
-
-The site content is stored in `./site`.
-
-This folder is currently has no purpose since the website is proxied to https://vtluug.github.io. We may switch to hosting it ourself eventually but no promises.
-
-
-## Configuration
-
-Nothing to see here :)
-
+simple nginx container that git pulls https://github.com/vtluug/vtluug.github.io once a minute. put this together because the current (github pages) reverse proxy was behaving really flaky one day.
 
 ## Running it
 
-
-
-Pull changes into `./site` and run `docker-compose build && docker-compose up --force-recreate -d`.
+`docker compose up -d`. you know the drill.

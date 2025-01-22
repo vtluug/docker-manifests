@@ -1,8 +1,8 @@
-version: '3'
-
 services:
   vtluug-site:
+    container_name: vtluug-site
     restart: unless-stopped
     build: .
     ports:
-      - 127.0.0.1:7000:1313
+    - 80:80
+  
