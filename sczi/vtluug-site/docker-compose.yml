@@ -3,3 +3,8 @@ services:
     container_name: vtluug-site
     restart: unless-stopped
     build: .
+
+networks:
+  default:
+    external: true
+    name: vtluug-network
