@@ -67,7 +67,7 @@ server {
     # Proxy to internal instance
     location /w {
         include /config/nginx/proxy.conf;
-        proxy_pass http://wiki_mediawiki_1:80;
+        proxy_pass http://wikis:80;
     }
 
     # Displayed path is /wiki, but actual path is /w

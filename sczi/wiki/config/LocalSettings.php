@@ -9,7 +9,7 @@ $wgDisableOutputCompression = true;
 
 # Database {{{
 $wgDBtype     = 'mysql';
-$wgDBserver   = 'wiki_database_1';
+$wgDBserver   = 'wiki-db';
 $wgDBname     = 'mw';
 $wgDBuser     = 'mw_user';
 $wgDBpassword = getenv('MYSQL_PASSWORD');

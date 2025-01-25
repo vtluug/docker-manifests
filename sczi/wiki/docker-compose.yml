@@ -2,6 +2,7 @@ version: '3'
 
 services:
   mediawiki:
+    container_name: wikis
     restart: unless-stopped
     depends_on:
       - database
@@ -18,7 +19,9 @@ services:
       - ./config/LocalSettings_vtluug.php:/var/www/html/w/LocalSettings_vtluug.php:ro
       - ./config/LocalSettings_gobblerpedia.php:/var/www/html/w/LocalSettings_gobblerpedia.php:ro
       - /nfs/tank/scratch:/tmp/tank:ro
+
   database:
+    container_name: wiki-db
     restart: unless-stopped
     env_file: database.env
     environment:
