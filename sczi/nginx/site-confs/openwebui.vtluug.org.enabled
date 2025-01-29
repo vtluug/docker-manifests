@@ -17,8 +17,9 @@ server {
     client_max_body_size 100M;
 
     location / {
-        include /config/nginx/proxy.conf;
+        # include /config/nginx/proxy.conf;
         proxy_pass http://gibson.vtluug.org:8081;
+        proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
 
