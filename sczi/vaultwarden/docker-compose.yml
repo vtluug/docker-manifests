@@ -10,7 +10,7 @@ services:
     volumes:
       - /nfs/cistern/docker/data/vw-data/:/data/
     ports:
-      - 7339:80
+      #- 7339:80
 
 networks:
   default:

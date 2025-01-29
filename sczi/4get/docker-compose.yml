@@ -11,9 +11,6 @@ services:
       - FOURGET_SERVER_NAME=search.vtluug.org
       - FOURGET_SERVER_SHORT_DESCRIPTION="Virginia Tech Linux & Unix User's Group"
       - FOURGET_SERVER_LONG_DESCRIPTION="Virginia Tech Linux & Unix User's Group"
-
-    ports:
-      - "7332:80"
       
     volumes:
       - /nfs/cistern/docker/apps/sczi/4get/banners:/var/www/html/4get/banner

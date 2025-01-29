@@ -6,8 +6,6 @@ services:
     restart: unless-stopped
     volumes:
       - /nfs/cistern/docker/apps/sczi/element/element-config.json:/app/config.json
-    ports: 
-      - "7331:80"
 
 networks:
   default:
