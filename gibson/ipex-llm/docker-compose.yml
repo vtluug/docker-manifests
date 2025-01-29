@@ -12,6 +12,8 @@ services:
     shm_size: "16g"
     mem_limit: "32g"
     restart: unless-stopped
+    stdin_open: true
+    tty: true
 
 networks:
   default:
