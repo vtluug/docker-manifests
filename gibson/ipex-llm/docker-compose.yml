@@ -9,6 +9,7 @@ services:
     environment:
       - no_proxy=localhost,127.0.0.1
       - DEVICE=Arc
+      - OLLAMA_HOST=0.0.0.0
     shm_size: "16g"
     mem_limit: "32g"
     restart: unless-stopped
