@@ -15,6 +15,9 @@ services:
     stdin_open: true
     tty: true
 
+    # start api server
+    command: ["/bin/bash", "-c", "/llm/scripts/start-ollama.sh"]
+
 networks:
   default:
     external:
