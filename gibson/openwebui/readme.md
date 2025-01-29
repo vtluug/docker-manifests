@@ -4,9 +4,12 @@ chatgpt-esque UI clone that interfaces with `ipex-llm`'s `ollama serve` on the b
 
 # configuration
 
-done manually once the container starts: 
+create an openwebui.env that looks something like
+```
+OAUTH_CLIENT_SECRET=<secret from/for dex>
+```
 
-* set up OIDC with VTLUUG auth
+done manually via the web interface once the container starts: 
 
 * ensure that the `ipex-llm` container is configured as a backend
 

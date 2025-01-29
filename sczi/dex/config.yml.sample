@@ -71,3 +71,8 @@ staticClients:
     - https://seed.vtluug.org/oauth2/callback
   name: "qbittorrent-sso"
   secret: $QBIT_SECRET
+- id: openwebui
+  redirectURIs:
+    - https://openwebui.vtluug.org/oauth/oidc/callback
+  name: "openwebui"
+  secret: $OPENWEBUI_SECRET
