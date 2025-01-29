@@ -1,0 +1,25 @@
+services:
+  ipex-llm-inference:
+    image: intelanalytics/ipex-llm-inference-cpp-xpu:latest
+    container_name: ipex-llm
+    devices:
+      - /dev/dri
+    volumes:
+      - /nfs/cistern/docker/data/ipex/models:/models
+    environment:
+      - no_proxy=localhost,127.0.0.1
+      - DEVICE=Arc
+      - OLLAMA_HOST=0.0.0.0
+    shm_size: "16g"
+    mem_limit: "32g"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+
+    # start api server
+    command: ["/bin/bash", "-c", "/bin/bash /llm/scripts/start-ollama.sh; exec bash"]
+
+networks:
+  default:
+    external:
+      name: vtluug-network

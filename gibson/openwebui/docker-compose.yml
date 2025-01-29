@@ -1,0 +1,23 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: openwebui
+    volumes:
+      - /nfs/cistern/docker/data/ipex/openwebui/:/app/backend/data
+    environment:
+      - PORT=8081
+      - ENABLE_OAUTH_SIGNUP=true
+      - OAUTH_CLIENT_ID=openwebui
+      - OPENID_PROVIDER_URL=https://id.vtluug.org/.well-known/openid-configuration
+      - OAUTH_PROVIDER_NAME=VTLUUG SSO
+    env_file:
+      - openwebui.env
+    privileged: true
+    ports: 
+      - 8081:8081
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: vtluug-network
