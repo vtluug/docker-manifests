@@ -16,7 +16,7 @@ services:
     tty: true
 
     # start api server
-    command: ["/bin/bash", "-c", "/bin/bash /llm/scripts/start-ollama.sh"]
+    command: ["/bin/bash", "-c", "/bin/bash /llm/scripts/start-ollama.sh; exec bash"]
 
 networks:
   default:
