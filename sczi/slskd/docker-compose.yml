@@ -26,8 +26,8 @@ services:
     image: quay.io/oauth2-proxy/oauth2-proxy:latest
     hostname: slskd-sso
     restart: unless-stopped
-    ports:
-      #- 4180:4180
+#    ports:
+#      #- 4180:4180
     env_file:
       - slskd-sso.env
 
