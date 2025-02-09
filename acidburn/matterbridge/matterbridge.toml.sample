@@ -1,5 +1,8 @@
 # sample config. the only thing that should need changing is the Password= for the matrix user
 
+[general]
+MediaDownloadSize=100000000
+
 [irc.oftc]
 Server="irc.oftc.net:6667"
 Nick="luugb"
