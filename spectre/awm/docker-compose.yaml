@@ -1,0 +1,29 @@
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 8781:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: ${AWM_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${AWM_DB_PASSWORD}
+      WORDPRESS_DB_NAME: awm_web_db
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: awm_web_db
+      MYSQL_USER: ${AWM_DB_USER}
+      MYSQL_PASSWORD: ${AWM_DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:
