@@ -1,7 +1,7 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name awm.vtluug.org www.awm.vtluug.org;
+    server_name awm.vtluug.org;
 
     return 301 https://awm.vtluug.org$request_uri;
 }
@@ -9,7 +9,7 @@ server {
 server {
     listen 443 ssl;
     liste [::]:443 ssl;
-    server_name www.awm.vtluug.org;
+    server_name awm.vtluug.org;
 
     include /config/nginx/ssl.conf
 
@@ -26,6 +26,6 @@ server {
     client_max_body_size 100M;
 
     location / {
-        proxy_pass https://awm:8781;
+        proxy_pass https://awm:8080;
     }
 }
