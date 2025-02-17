@@ -23,6 +23,7 @@ services:
       MYSQL_ROOT_PASSWORD: '1'
     volumes:
       - db:/var/lib/mysql
+      - /nfs/cistern/docker/data/awm:/var/awm:rw
 
 volumes:
   wordpress:
