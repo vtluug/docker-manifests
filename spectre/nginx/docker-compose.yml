@@ -24,12 +24,7 @@ services:
       - ./site-confs:/config/nginx/site-confs:ro
       - ./jail.local:/config/jail2ban/jail.local:ro
     ports:
-      - 128.173.88.78:80:80
-      - 128.173.88.78:443:443
-      - 128.173.88.78:8448:8448 # matrix federation
-      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:80:80
-      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:443:443
-      - 2607:b400:0006:cc80:0000:0aff:fe62:000b:8448:8448 # matrix federation
+      - 2607:b400:0006:cc80:0000:0aff:fe62:0004:8781:8781
 
 networks:
   default:
