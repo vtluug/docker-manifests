@@ -24,8 +24,8 @@ services:
       - ./site-confs:/config/nginx/site-confs:ro
       - ./jail.local:/config/jail2ban/jail.local:ro
     ports:
-      - 128.173.88.248:80:80
-      - 128.173.88.248:443:443
+      - 128.173.89.163:80:80
+      - 128.173.89.163:443:443
       - 2607:b400:0006:cc80:0000:0aff:fe62:000f:80:80
       - 2607:b400:0006:cc80:0000:0aff:fe62:000f:443:443
 
