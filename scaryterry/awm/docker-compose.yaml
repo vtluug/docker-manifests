@@ -31,3 +31,8 @@ services:
 volumes:
   wordpress:
   db:
+
+networks:
+  default:
+    external:
+      name: vtluug-network
