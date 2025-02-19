@@ -1,0 +1,31 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name awm.vtluug.org;
+
+    return 301 https://awm.vtluug.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    liste [::]:443 ssl;
+    server_name awm.vtluug.org;
+
+    include /config/nginx/ssl.conf
+
+    return 301 httpsL//gobblerpedia.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name awm.vtluug.org;
+
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 100M;
+
+    location / {
+        proxy_pass https://awm:8080;
+    }
+}
