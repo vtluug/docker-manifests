@@ -5,9 +5,8 @@
 write something like the following to `gluetun.env` 
 
 ```
-OPENVPN_USER=13371337
+privateKey=key
 ```
-
 with the key from the luug's vpn sub (should probably maybe be in https://git.vtluug.org/officers/vtluug-admin/, `accounts.yml`). relies entirely on the vpn bill getting paid somehow.
 
 
