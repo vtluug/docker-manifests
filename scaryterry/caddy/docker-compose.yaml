@@ -16,7 +16,7 @@ volumes:
   caddy_data:
   caddy_config:
 
-network:
+networks:
   default:
     external:
       name: vtluug-network
