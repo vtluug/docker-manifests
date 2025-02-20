@@ -1,0 +1,3 @@
+awm.vtluug.org {
+  reverse_proxy awm:80
+}
