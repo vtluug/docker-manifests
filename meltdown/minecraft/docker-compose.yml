@@ -7,6 +7,7 @@ services:
       - "25565:25565"
     environment:
       EULA: "TRUE"
+      DIFFICULTY: "normal"
       # TYPE: "MODRINTH"
       # MODRINTH_MODPACK: /modpacks/huntersmodpack1.0.0.mrpack
     volumes:
