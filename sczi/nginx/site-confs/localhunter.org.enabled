@@ -1,0 +1,34 @@
+server {
+    listen 80;
+    listen [::]:80;
+    server_name localhunter.org www.localhunter.org;
+
+    return 301 https://localhunter.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name www.localhunter.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    return 301 https://localhunter.org$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name localhunter.org;
+
+    # ssl conf
+    include /config/nginx/ssl.conf;
+
+    client_max_body_size 1M;
+
+    location / {
+        root /files/hunterwebsite;
+        index index.html;
+    }
+}
