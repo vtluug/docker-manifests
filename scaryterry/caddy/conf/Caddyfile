@@ -7,5 +7,6 @@ www.localhunter.com {
 }
 
 localhunter.com {
-  reverse_proxy https://vtluug.org/users/~localhunter
+  rewrite * /users/~localhunter{uri}
+  reverse_proxy https://vtluug.org
 }
