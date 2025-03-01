@@ -11,8 +11,8 @@ services:
       ENABLE_WHITELIST: "TRUE"
       WHITELIST: "heavy_weather142,browzerhistory" #send an email to localhunter@vtluug.org to get on the whitelist
       ICON: "https://vtluug.org/w/images/thumb/a/a5/Hokie_tux.png/711px-Hokie_tux.png"
-      RCON_CMDS_STARTUP: | -
-      /op heavy_weather142
+      OPS: |
+        heavy_weather142
       
       # TYPE: "MODRINTH"
       # MODRINTH_MODPACK: /modpacks/huntersmodpack1.0.0.mrpack
