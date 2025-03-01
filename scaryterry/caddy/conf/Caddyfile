@@ -1,3 +1,11 @@
 awm.vtluug.org {
   reverse_proxy awm:80
 }
+
+www.localhunter.com {
+  redir https://localhunter.com{uri}
+}
+
+localhunter.com {
+  reverse_proxy https://vtluug.org/users/~localhunter
+}
