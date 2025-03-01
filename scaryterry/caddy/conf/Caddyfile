@@ -7,6 +7,8 @@ www.localhunter.org {
 }
 
 localhunter.org {
-  rewrite * /users/~localhunter{uri}
-  reverse_proxy https://vtluug.org
+  rewrite /* /users/~localhunter{uri}
+  reverse_proxy https://vtluug.org {
+    header_up Host vtluug.org
+  }
 }
