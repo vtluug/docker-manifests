@@ -8,6 +8,8 @@ services:
     environment:
       EULA: "TRUE"
       DIFFICULTY: "normal"
+      ENABLE_WHITELIST: "TRUE"
+      WHITELIST_FILE: "/data/whitelist.json"
       # TYPE: "MODRINTH"
       # MODRINTH_MODPACK: /modpacks/huntersmodpack1.0.0.mrpack
     volumes:
