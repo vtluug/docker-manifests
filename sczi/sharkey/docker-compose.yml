@@ -1,20 +1,16 @@
 services:
   web:
+    container_name: sharkey
     image: registry.activitypub.software/transfem-org/sharkey:latest
-#   build: .
     restart: always
     links:
       - db
       - redis
-#     - mcaptcha
-#     - meilisearch
     depends_on:
       db:
         condition: service_healthy
       redis:
         condition: service_healthy
-    # ports:
-      # - "3000:3000"
     networks:
       - sharkey
     env_file:
@@ -22,7 +18,6 @@ services:
     environment:
       - NODE_OPTIONS="--max-old-space-size=8192"
     volumes:
-      # - ./files:/sharkey/files
       - ./.config:/sharkey/.config:ro
 
   redis:
@@ -50,50 +45,6 @@ services:
       test: "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"
       interval: 5s
       retries: 20
-
-#  mcaptcha:
-#    restart: always
-#    image: mcaptcha/mcaptcha:latest
-#    networks:
-#      sharkey:
-#        aliases:
-#          - localhost
-#    ports:
-#      - 7493:7493
-#    env_file:
-#      - .config/docker.env
-#    environment:
-#      PORT: 7493
-#      MCAPTCHA_redis_URL: "redis://mcaptcha_redis/"
-#      MCAPTCHA_allow_registration: true
-#      MCAPTCHA_server_DOMAIN: "example.tld"
-#    depends_on:
-#      db:
-#        condition: service_healthy
-#      mcaptcha_redis:
-#        condition: service_healthy
-#
-#  mcaptcha_redis:
-#    image: mcaptcha/cache:latest
-#    networks:
-#      - sharkey
-#    healthcheck:
-#      test: "redis-cli ping"
-#      interval: 5s
-#      retries: 20
-
-#  meilisearch:
-#    restart: always
-#    image: getmeili/meilisearch:v1.13.0
-#    environment:
-#      - MEILI_NO_ANALYTICS=true
-#      - MEILI_ENV=production
-#      - MEILI_MASTER_KEY=ChangeThis
-#    networks:
-#      - sharkey
-#    volumes:
-#      - ./meili_data:/meili_data
-
 
 networks:
   sharkey:

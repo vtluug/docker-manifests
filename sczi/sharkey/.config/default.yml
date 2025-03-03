@@ -95,14 +95,7 @@ db:
   host: db
   port: 5432
 
-  # Database name
-  # You can set db from an environment variable instead.
-  db: misskey
-
-  # Auth
-  # You can set user and pass from environment variables instead.
-  user: example-misskey-user
-  pass: example-misskey-pass
+  # db stuff is set with environment variables
 
   # Whether disable Caching queries
   #disableCache: true

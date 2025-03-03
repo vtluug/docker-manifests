@@ -20,7 +20,7 @@ server {
     location / {
         # Proxy to container
         include /config/nginx/proxy.conf;
-        proxy_pass http://sharkey_web_1:3000;
+        proxy_pass http://sharkey:3000;
         #proxy_set_header X-Forwarded-For $remote_addr;
         #proxy_set_header X-Forwarded-Proto $scheme;
         #proxy_set_header Host $host;
