@@ -19,6 +19,6 @@ server {
     location / {
         # Proxy to container
         include /config/nginx/proxy.conf;
-        proxy_pass http://classutil_web_1:8000;
+        proxy_pass http://classutil:8000;
     }
 }
