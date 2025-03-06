@@ -1,0 +1,50 @@
+services:
+  web:
+    container_name: sharkey
+    image: registry.activitypub.software/transfem-org/sharkey:latest
+    restart: always
+    links:
+      - db
+      - redis
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - sharkey
+    env_file:
+      - .config/docker.env
+    environment:
+      - NODE_OPTIONS="--max-old-space-size=8192"
+    volumes:
+      - ./.config:/sharkey/.config:ro
+
+  redis:
+    restart: always
+    image: redis:7-alpine
+    networks:
+      - sharkey
+    volumes:
+      - /nfs/cistern/docker/data/sharkey/redis:/data
+    healthcheck:
+      test: "redis-cli ping"
+      interval: 5s
+      retries: 20
+
+  db:
+    restart: always
+    image: groonga/pgroonga:4.0.1-alpine-17
+    networks:
+      - sharkey
+    env_file:
+      - .config/docker.env
+    volumes:
+      - /nfs/cistern/docker/data/sharkey/db:/var/lib/postgresql/data
+    healthcheck:
+      test: "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"
+      interval: 5s
+      retries: 20
+
+networks:
+  sharkey:
