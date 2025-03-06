@@ -11,8 +11,6 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    networks:
-      - sharkey
     env_file:
       - .config/docker.env
     environment:
@@ -23,8 +21,6 @@ services:
   redis:
     restart: always
     image: redis:7-alpine
-    networks:
-      - sharkey
     volumes:
       - /nfs/cistern/docker/data/sharkey/redis:/data
     healthcheck:
@@ -35,8 +31,6 @@ services:
   db:
     restart: always
     image: groonga/pgroonga:4.0.1-alpine-17
-    networks:
-      - sharkey
     env_file:
       - .config/docker.env
     volumes:
@@ -46,5 +40,6 @@ services:
       interval: 5s
       retries: 20
 
-networks:
-  sharkey:
+default:
+  external:
+    name: vtluug-network
