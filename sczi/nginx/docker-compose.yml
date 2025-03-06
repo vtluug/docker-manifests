@@ -12,7 +12,7 @@ services:
       EMAIL: sysadmin@vtluug.org
       # URL field must be working since nginx only starts if letsencrypt works
       URL: vtluug.org
-      SUBDOMAINS: www,bash,id,irc,sczi,wiki,element,search,matrix,git,bitwarden,soulseek,seed,openwebui
+      SUBDOMAINS: www,bash,id,irc,sczi,wiki,element,search,matrix,git,bitwarden,soulseek,social,seed,openwebui
       EXTRA_DOMAINS: gobblerpedia.org,www.gobblerpedia.org,hokieprivacy.org,www.hokieprivacy.org,distributions.pconte.me
       VALIDATION: html # TODO Switch to dns + gandi api once pr is merged
       TZ: America/New_York
