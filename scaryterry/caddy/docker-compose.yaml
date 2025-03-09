@@ -13,14 +13,10 @@ services:
     volumes:
       - ./conf:/etc/caddy
       - ./site:/srv
-      - caddy_data:/data
-      - caddy_config:/config
+      - /hfs/docker/data/caddy/data:/data
+      - /hfs/docker/data/caddy/config:/config
 
 networks:
   default:
     external:
       name: vtluug-network
-
-volumes:
-  caddy_data:
-  caddy_config:

@@ -12,3 +12,7 @@ localhunter.org {
     header_up Host vtluug.org
   }
 }
+
+jams.hankslair.com {
+	reverse_proxy 715132257.hankslair.com:8096;
+}
