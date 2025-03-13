@@ -5,6 +5,7 @@ services:
     restart: unless-stopped
     env_file: pyqdb.env
     image: vtluug/pyqdb
+    container_name: pyqdb
     volumes:
       - /nfs/cistern/docker/data/pyqdb/quotes.db:/app/quotes.db
 
