@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# run this after the container goes up
+docker compose pull
+docker compose up -d
+sleep 5
 
 # make opensearch hallucinate that we're connecting thru https
 #  otherwise, it'll add the search engine as http://[host], which 

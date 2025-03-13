@@ -1,11 +1,8 @@
-version: '3'
-
 services:
   fourget:
     container_name: fourget
     image: luuul/4get:latest
     restart: unless-stopped
-    command: ['/bin/sh', '-c', 'sleep 10 && sed -i '2i\$_SERVER[\"HTTPS\"] = \"on\";' /var/www/html/4get/opensearch.php']
     environment:
       - FOURGET_PROTO=http
       - FOURGET_SERVER_NAME=search.vtluug.org
