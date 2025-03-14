@@ -16,3 +16,10 @@ services:
     restart: unless-stopped
     environment:
       - JELLYFIN_PublishedServerUrl=https://watch.vtluug.org
+    ports:
+      - 8002:8096
+
+networks:
+  default:
+    external:
+      name: vtluug-network

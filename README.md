@@ -27,21 +27,13 @@ We manage some images using docker hub. PM the sysadmin if you want to get added
 
 #### External Ports
 
-The `nginx` container exposes ports 80 and 443 and acts as a reverse-proxy for all other sites.
-
-For non-webapps, ports 9000-9999 are used to expose (most) apps externally.
-* archivewarrior: ???
-    * Only accessible via localhost on meltdown
-* 113: thelounge (IRC identd)
-
-#### Internal container ports
-
-Containers proxied through nginx:
-* wiki: 80
-* dex: 5556
-
-We also run some static servies directly served through nginx (hokieprivacy, /files, etc)
+* sczi
+    * The `nginx` container exposes ports 80 and 443 and acts as a reverse-proxy for all other sites.
+    * 113: thelounge (IRC identd)
+* gibson
+    * 8001: openwebui
+    * 8002: jellyfin
 
 
 ### Apps to be implemented after main apps (in order of priority)
-gopher, minecraft, jitsi, map, syncthing-relay, QUIC, some monitoring things (elk, prometheous, portainer, ???)
+gopher, jitsi, map, syncthing-relay, QUIC, some monitoring things (elk, prometheous, portainer, ???)
