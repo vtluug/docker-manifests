@@ -1,0 +1,18 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin
+    user: 1000:1000
+    group_add:
+      - "993" # render group, see readme
+    network_mode: 'host'
+    volumes:
+      - /nfs/cistern/docker/data/jellyfin/config:/config
+      - /nfs/cistern/docker/data/jellyfin/cache:/cache
+      - /nfs/cistern/share/media/music:/music
+      - /nfs/cistern/share/media/tvshows:/tvshows
+      - /nfs/cistern/share/media/movies:/movies
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128 # see readme
+    restart: unless-stopped
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://watch.vtluug.org
