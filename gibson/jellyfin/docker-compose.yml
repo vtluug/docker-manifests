@@ -5,7 +5,6 @@ services:
     user: 1000:1000
     group_add:
       - "993" # render group, see readme
-    network_mode: 'host'
     volumes:
       - /nfs/cistern/docker/data/jellyfin/config:/config
       - /nfs/cistern/docker/data/jellyfin/cache:/cache
