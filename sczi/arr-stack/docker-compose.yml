@@ -8,8 +8,6 @@ services:
       - TZ=Etc/EST
     volumes:
       - /nfs/cistern/docker/data/prowlarr/config:/config
-    ports:
-      - 9696:9696
     restart: unless-stopped
 
 networks:
