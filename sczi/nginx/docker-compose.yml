@@ -4,6 +4,7 @@ services:
   letsencrypt:
     restart: unless-stopped
     image: linuxserver/swag
+    container_name: swag
     cap_add:
       - NET_ADMIN
     environment:
