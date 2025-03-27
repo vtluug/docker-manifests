@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  roundcubemail:
+    image: roundcube/roundcubemail:latest
+    container_name: roundcubemail
+    volumes:
+      - ./www:/var/www/html
+      - ./db/sqlite:/var/roundcube/db
+    #ports:
+    #  - 9002:80
+    environment:
+      ROUNDCUBEMAIL_DB_TYPE: sqlite
+      ROUNDCUBEMAIL_SKIN: elastic #TODO: Make a custom vtluug skin.
+      ROUNDCUBEMAIL_DEFAULT_HOST: "ssl://mail.vtluug.org"
+      ROUNDCUBEMAIL_SMTP_SERVER: "tls://mail.vtluug.org"
+      ROUNDCUBEMAIL_DEFAULT_PORT: 993
+      ROUNDCUBEMAIL_SMTP_PORT: 587
+
+networks:
+  default:
+    external:
+      name: vtluug-network
