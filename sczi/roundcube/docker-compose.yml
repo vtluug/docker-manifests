@@ -5,8 +5,8 @@ services:
     image: roundcube/roundcubemail:latest
     container_name: roundcubemail
     volumes:
-      - ./www:/var/www/html
-      - ./db/sqlite:/var/roundcube/db
+      - /nfs/cistern/docker/data/roundcube/www:/var/www/html
+      - /nfs/cistern/docker/data/roundcube/db/sqlite:/var/roundcube/db
     #ports:
     #  - 9002:80
     environment:
