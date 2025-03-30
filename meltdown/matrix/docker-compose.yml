@@ -3,10 +3,26 @@ version: '3'
 services:
   synapse:
     image: matrixdotorg/synapse:latest
+    container_name: synapse
     restart: unless-stopped
-
     ports:
       - 7333:8008
-      
     volumes:
       - /nfs/cistern/docker/data/synapse:/data
+    env_file: synapse.env
+    environment:
+      - SYNAPSE_DATABASE_NAME=synapse
+      - SYNAPSE_DATABASE_USER=synapse
+      - SYNAPSE_DATABASE_HOST=synapse-postgres
+    depends_on:
+      - synapse-postgres
+  synapse-postgres:
+    image: postgres:14
+    container_name: synapse-postgres
+    restart: unless-stopped
+    env_file: synapse.env
+    environment:
+      - POSTGRES_DB=synapse
+      - POSTGRES_USER=synapse
+    volumes:
+      - /nfs/cistern/docker/data/synapse/postgres:/var/lib/postgresql/data
