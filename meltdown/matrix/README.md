@@ -4,9 +4,12 @@ Base image: https://hub.docker.com/r/matrixdotorg/synapse/
 
 A matrix homeserver for the luug, listens to http on post 8008 internally.
 
-*banished to meltdown for now because there's a docker bug that breaks it and i don't want to mess with the sczi environment at the moment.*
 
 ## Configuration
+
+make a synapse.env with your postgres password.
+
+postgres is not initialized to the synapse schema by default.
 
 [synapse requires you to generate a config](https://hub.docker.com/r/matrixdotorg/synapse).
 
