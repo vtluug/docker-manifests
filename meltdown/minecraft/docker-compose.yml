@@ -8,16 +8,16 @@ services:
       - "25565:25565"
     environment:
       EULA: "TRUE"
-      DIFFICULTY: "normal"
-      ENABLE_WHITELIST: "TRUE"
-      WHITELIST: "heavy_weather142,browzerhistory" #send an email to localhunter@vtluug.org to get on the whitelist
+      TYPE: "PURPUR"
+      DIFFICULTY: "normal" 
+      SERVER_NAME: "VTLUUGsmp"
       ICON: "https://vtluug.org/w/images/thumb/a/a5/Hokie_tux.png/711px-Hokie_tux.png"
       OPS: |
-        heavy_weather142
+        Isotton1
+
+      SPIGET_RESOURCES: 80128 #PasswordProtect
       
-      # TYPE: "MODRINTH"
-      # MODRINTH_MODPACK: /modpacks/huntersmodpack1.0.0.mrpack
     volumes:
       # attach the relative directory 'data' to the container' /data path
       - /nfs/cistern/docker/data/minecraft/data:/data
-      - /nfs/cistern/docker/data/minecraft/modpacks:/modpacks:ro
+      - ./plugins:/plugins

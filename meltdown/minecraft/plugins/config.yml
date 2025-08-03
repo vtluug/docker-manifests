@@ -1,0 +1,39 @@
+# For help please refer to https://dev.bukkit.org/projects/passwordprotect
+
+# For help please refer to https://dev.bukkit.org/projects/passwordprotect
+hash: SHA-512
+opsRequirePassword: true
+disableJailArea: false
+cleanPassword: false
+password: ''
+passwordClean: ''
+autoUpdater: true
+prevent:
+  movement: true
+  interaction: true
+  interactionMobs: true
+  itemPickup: true
+  itemDrop: true
+  portal: true
+  blockPlace: true
+  blockBreak: true
+  triggering: true
+  attacks: true
+  damage: true
+  chat: true
+  deathDrops: true
+  flying: true
+wrongAttempts:
+  kick: 3
+  ban: 10
+  banIP: true
+broadcast:
+  kick: true
+  ban: true
+darkness: true
+slowness: true
+allowedCommands:
+- help
+- rules
+teleportBack: true
+loginMessage: true
