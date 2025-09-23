@@ -1,0 +1,16 @@
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/EST
+    volumes:
+      - /nfs/cistern/docker/data/prowlarr/config:/config
+    restart: unless-stopped
+
+networks:
+  default:
+    external:
+      name: vtluug-network
