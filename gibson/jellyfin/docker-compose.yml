@@ -6,8 +6,8 @@ services:
     group_add:
       - "993" # render group, see readme
     volumes:
-      - /nfs/cistern/docker/data/jellyfin/config:/config
-      - /nfs/cistern/docker/data/jellyfin/cache:/cache
+      - /opt/jerryfin/config:/config
+      - /opt/jerryfin/cache:/cache
       - /nfs/cistern/share/media/music:/music
       - /nfs/cistern/share/media/tvshows:/tvshows
       - /nfs/cistern/share/media/movies:/movies
