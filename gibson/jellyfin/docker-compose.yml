@@ -6,20 +6,18 @@ services:
     group_add:
       - "993" # render group, see readme
     volumes:
+      - /etc/ipa/ca.crt:/etc/jfin/ldap_ca.crt:ro
       - /opt/jerryfin/config:/config
       - /opt/jerryfin/cache:/cache
       - /nfs/cistern/share/media/music:/music
-      - /nfs/cistern/share/media/tvshows:/tvshows
-      - /nfs/cistern/share/media/movies:/movies
+      - /nfs/cistern/share/torrent-dl:/nfs/cistern/share/torrent-dl
+      - /nfs/cistern/share/media/movies:/nfs/cistern/share/media/movies
+      - /nfs/cistern/share/media/tvshows:/nfs/cistern/share/media/tvshows
+      - /nfs/cistern/share/jellyfin/symlinked-shows:/tvshows
+      - /nfs/cistern/share/jellyfin/symlinked-movies:/movies
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128 # see readme
     restart: unless-stopped
     environment:
       - JELLYFIN_PublishedServerUrl=https://watch.vtluug.org
-    ports:
-      - 8002:8096
-
-networks:
-  default:
-    external:
-      name: vtluug-network
+    network_mode: "host"
